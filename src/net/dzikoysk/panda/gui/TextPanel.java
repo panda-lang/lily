@@ -78,7 +78,7 @@ public class TextPanel extends JPanel {
                             javascript = (JSObject) webEngine.executeScript("window");
                             javascript.setMember("java", new Javascript());
                             javascript.call("java.exit");
-                            webEngine.executeScript(Syntax.prase());
+                            webEngine.executeScript(Syntax.parse());
                             webEngine.executeScript("window.editor = CodeMirror.fromTextArea(document.getElementById(\"editor\"), {lineNumbers: true,mode: \"panda\",matchBrackets: true});");
               	            jsobj = (JSObject)webEngine.executeScript("editor");
               	            jsobj.call("setValue", panda).toString();
