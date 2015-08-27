@@ -20,7 +20,7 @@ public class Syntax {
 		
 	}
 	
-	public String prase(){
+	public String parse(){
 		javascript  = "CodeMirror.defineSimpleMode('panda', {";		
 		javascript += "start: [";
 		//-- defined
