@@ -1,0 +1,33 @@
+.cm-comment{
+	color: #aaa !important;
+}
+.cm-string, .cm-number{
+	color: #3af !important;
+}
+.cm-atom{
+	color: magenta !important;
+}
+.cm-keyword{
+	color: pink !important;
+}
+
+.cm-method{
+	color: #666 !important;
+}
+.cm-method-name{
+	color: #555 !important;
+}
+.cm-argument{
+	color: #aaa !important;
+	font-style: italic;
+}
+
+.cm-object{
+	color: #555 !important;
+}
+
+.CodeMirror-matchingbracket{
+	color: inherit !important;
+	background: #0fa;
+	border-radius: 3px;
+}
