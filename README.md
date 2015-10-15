@@ -1,1 +1,1 @@
-# pEditor for Panda 0.0.9
+> Editor released for Panda language
