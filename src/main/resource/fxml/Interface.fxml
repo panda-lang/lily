@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File" >
+            <items>
+              <MenuItem mnemonicParsing="false" text="New" accelerator="Ctrl + N"/>
+                <MenuItem mnemonicParsing="false" text="Open" />
+                <MenuItem mnemonicParsing="false" text="Settings" />
+                <MenuItem mnemonicParsing="false" text="Save All" accelerator="Ctrl + S" />
+                <MenuItem mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Undo" accelerator="Ctrl + Z"/>
+                <MenuItem mnemonicParsing="false" text="Redo" accelerator="Ctrl + Shift + Z"/>
+                <MenuItem mnemonicParsing="false" text="Cut" accelerator="Ctrl + X"/>
+                <MenuItem mnemonicParsing="false" text="Copy" accelerator="Ctrl + C"/>
+                <MenuItem mnemonicParsing="false" text="Paste" accelerator="Ctrl + V"/>
+                <MenuItem mnemonicParsing="false" text="Find" accelerator="Ctrl + F"/>
+                <MenuItem mnemonicParsing="false" text="Select All" accelerator="Ctrl + A"/>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About Panda " />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <TreeView editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="SELECTED_TAB" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Hello Panda">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <ToolBar prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

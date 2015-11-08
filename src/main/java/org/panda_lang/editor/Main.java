@@ -1,4 +1,4 @@
-package org.panda_lang.peditor;
+package org.panda_lang.editor;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
-        Parent root = FXMLLoader.load(getClass().getResource("Interface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/interface.fxml"));
         Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
 
         stage.setX(bounds.getMinX());
