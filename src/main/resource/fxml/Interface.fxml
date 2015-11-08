@@ -4,54 +4,63 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panda_lang.editor.Interface">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File" >
+          <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="New" accelerator="Ctrl + N"/>
-                <MenuItem mnemonicParsing="false" text="Open" />
-                <MenuItem mnemonicParsing="false" text="Settings" />
-                <MenuItem mnemonicParsing="false" text="Save All" accelerator="Ctrl + S" />
-                <MenuItem mnemonicParsing="false" text="Exit" />
+                <MenuItem fx:id="menuFileNew" accelerator="Ctrl + N" mnemonicParsing="false" text="New                                    " />
+                <MenuItem fx:id="menuFileOpenFile" mnemonicParsing="false" text="Open File..." />
+                <MenuItem fx:id="menuFileOpenFolder" mnemonicParsing="false" text="Open Folder..." />
+                <MenuItem fx:id="menuFileSettings" mnemonicParsing="false" text="Settings" />
+                <MenuItem fx:id="menuFileSaveAll" accelerator="Ctrl + S" mnemonicParsing="false" text="Save All" />
+                <MenuItem fx:id="menuFileExit" mnemonicParsing="false" text="Exit" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
             <items>
-                <MenuItem mnemonicParsing="false" text="Undo" accelerator="Ctrl + Z"/>
-                <MenuItem mnemonicParsing="false" text="Redo" accelerator="Ctrl + Shift + Z"/>
-                <MenuItem mnemonicParsing="false" text="Cut" accelerator="Ctrl + X"/>
-                <MenuItem mnemonicParsing="false" text="Copy" accelerator="Ctrl + C"/>
-                <MenuItem mnemonicParsing="false" text="Paste" accelerator="Ctrl + V"/>
-                <MenuItem mnemonicParsing="false" text="Find" accelerator="Ctrl + F"/>
-                <MenuItem mnemonicParsing="false" text="Select All" accelerator="Ctrl + A"/>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+                <MenuItem fx:id="menuEditUndo" accelerator="Ctrl + Z" mnemonicParsing="false" text="Undo" />
+                <MenuItem fx:id="menuEditRedo" accelerator="Ctrl + Shift + Z" mnemonicParsing="false" text="Redo" />
+                <MenuItem fx:id="menuEditCut" accelerator="Ctrl + X" mnemonicParsing="false" text="Cut                           " />
+                <MenuItem fx:id="menuEditCopy" accelerator="Ctrl + C" mnemonicParsing="false" text="Copy" />
+                <MenuItem fx:id="menuEditPaste" accelerator="Ctrl + V" mnemonicParsing="false" text="Paste" />
+                <MenuItem fx:id="menuEditFind" accelerator="Ctrl + F" mnemonicParsing="false" text="Find" />
+                <MenuItem fx:id="menuEditSelectAll" accelerator="Ctrl + A" mnemonicParsing="false" text="Select All" />
+                <MenuItem fx:id="menuEditDelete" mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About Panda " />
+              <MenuItem fx:id="menuHelpAbout" mnemonicParsing="false" text="About Panda                         " />
             </items>
           </Menu>
         </menus>
       </MenuBar>
    </top>
-   <left>
-      <TreeView editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </left>
-   <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="SELECTED_TAB" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab text="Hello Panda">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </center>
    <bottom>
-      <ToolBar prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+      <ToolBar fx:id="toolBar" prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
    </bottom>
+   <center>
+      <SplitPane fx:id="splitPane" dividerPositions="0.20066889632107024" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <TreeView fx:id="filesTree" editable="true" prefHeight="200.0" prefWidth="200.0" />
+            <TabPane fx:id="tabPane" prefHeight="353.0" prefWidth="130.0" tabClosingPolicy="SELECTED_TAB">
+              <tabs>
+                  <!--
+                <Tab text="Hello Panda">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea layoutX="-3.0" layoutY="-16.0" prefHeight="340.0" prefWidth="481.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                -->
+              </tabs>
+            </TabPane>
+         </items>
+      </SplitPane>
+   </center>
 </BorderPane>

@@ -8,14 +8,17 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class Editor extends Application {
 
-    public static void main(String[] args) throws Exception {
-        launch(args);
-    }
+    public static Editor instance;
+    private Stage stage;
+    private Interface anInterface;
 
     @Override
     public void start(Stage stage) throws Exception {
+        this.stage = stage;
+        instance = this;
+
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/interface.fxml"));
@@ -32,7 +35,25 @@ public class Main extends Application {
         stage.setMaximized(true);
 
         stage.show();
+    }
 
+    protected void initAnInterface(Interface anInterface) {
+        this.anInterface = anInterface;
+    }
+
+    public Interface getInterface() {
+        return this.anInterface;
+    }
+
+    public Stage getStage() {
+        return this.stage;
+    }
+
+
+
+
+    public static void main(String[] args) throws Exception {
+        launch(args);
     }
 
 }
