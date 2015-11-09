@@ -10,6 +10,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import org.panda_lang.panda.util.IOUtils;
 
 import java.io.File;
@@ -19,34 +21,55 @@ import java.util.ResourceBundle;
 public class TabInterface implements Initializable {
 
     @FXML private Tab tab;
-    @FXML private TextArea textArea;
+    @FXML private WebView webView;
 
     private String title;
+    private WebEngine engine;
+    private boolean changes;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textArea.setStyle(
-                "-fx-text-fill: black;"+
-                "-fx-background-color: white;"+
-                "-fx-font-family: Consolas ;" +
-                "-fx-font-size: 13px;");
-        textArea.setOnKeyPressed(key -> {
+        engine = webView.getEngine();
+        webView.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent;");
+
+        // {events}
+        webView.setOnKeyPressed(key -> {
+            if(changes) return;
             tab.setText(title + " *");
+            changes = true;
         });
     }
 
     public void run(TabPane pane, File file) {
+        // {resources}
         String content = IOUtils.getContent(file);
+        content = content.replace("'", "\\'");
+        content = content.replace(System.getProperty("line.separator"), "\\n");
+        content = content.replace("\n", "\\n");
+        content = content.replace("\r", "\\n");
+
+        String url = getClass().getResource("/html/area.html").toExternalForm();
+
+        // {initData}
+        engine.load(url);
+        webView.setUserData(file);
+
+        // {tab.anem}
         this.title = file.getName();
         tab.setText(title);
-        textArea.setUserData(file);
-        textArea.setText(content);
+
+        // {add}
         pane.getTabs().add(tab);
-        textArea.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY), () -> {
-            File f = (File) textArea.getUserData();
-            IOUtils.overrideFile(f, textArea.getText());
+
+        // {accelerators}
+        webView.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY), () -> {
+            File f = (File) webView.getUserData();
+            IOUtils.overrideFile(f, (String) engine.executeScript("getSource();"));
             tab.setText(title);
+            changes = false;
         });
+
+        engine.executeScript("source = '" + content + "';");
     }
 
 }

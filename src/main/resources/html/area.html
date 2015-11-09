@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Area</title>
+    <style>
+        html, body {
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        body textarea {
+            width: 99.5%;
+            height: 99.4%;
+            font-family: Consolas;
+            resize: none;
+        }
+    </style>
+    <script>
+        var source;
+        var load;
+
+        function setSource(s) {
+            source = s;
+            if(load) {
+                document.getElementById('area').value = source;
+            }
+        }
+
+        function getSource() {
+            return source;
+        }
+
+        function update() {
+            setSource(source);
+        }
+
+        window.onload = function() {
+            load = true;
+            document.getElementById('area').value = source;
+        }
+
+    </script>
+</head>
+<body>
+    <textarea id="area">
+
+    </textarea>
+</body>
+</html>
