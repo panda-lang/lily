@@ -20,20 +20,19 @@ public class Editor extends Application {
         instance = this;
 
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        Initializer.init();
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/interface.fxml"));
+        Scene scene = new Scene(root, bounds.getWidth() * 0.6, bounds.getHeight() * 0.5);
         //root.getStylesheets().add("/css/dark.css");
-        Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
 
-        stage.setX(bounds.getMinX());
-        stage.setY(bounds.getMinY());
-        stage.setWidth(bounds.getWidth());
-        stage.setHeight(bounds.getHeight());
+        stage.setWidth(bounds.getWidth() * 0.7);
+        stage.setHeight(bounds.getHeight() * 0.6);
+        stage.setX((bounds.getWidth() - stage.getWidth()) / 2);
+        stage.setY((bounds.getHeight() - stage.getHeight()) / 2);
 
         stage.setTitle("Panda Editor");
         stage.setScene(scene);
-
-        stage.setMaximized(true);
 
         stage.show();
     }

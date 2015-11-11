@@ -10,14 +10,14 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FilesTree {
+public class Explorer {
 
     private final TreeView<String> tree;
     private final Image defaultFileIcon;
     private final Image defaultFolderIcon;
     private final Map<TreeItem<String>, File> files;
 
-    public FilesTree(TreeView<String> tree) {
+    public Explorer(TreeView<String> tree) {
         this.tree = tree;
         this.files = new HashMap<>();
         this.defaultFileIcon = new Image(getClass().getResourceAsStream("/icons/defaultFileIcon.png"));

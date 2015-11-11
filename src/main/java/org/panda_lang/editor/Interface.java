@@ -1,15 +1,11 @@
 package org.panda_lang.editor;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import org.panda_lang.panda.util.IOUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +20,7 @@ public class Interface implements Initializable {
     @FXML private TreeView<String> filesTree;
     @FXML private TabPane tabPane;
 
-    private FilesTree tree;
+    private Explorer tree;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -46,7 +42,7 @@ public class Interface implements Initializable {
         });
         menuFileExit.setOnAction(event -> System.exit(-1));
 
-        this.tree = new FilesTree(filesTree);
+        this.tree = new Explorer(filesTree);
         this.tree.open(new File("./"));
     }
 

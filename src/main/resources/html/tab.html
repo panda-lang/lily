@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab</title>
+    ${imports}
+    <style>
+        html, body {
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: #1d1d1d;
+        }
+
+        body textarea {
+            width: 100%;
+            min-height: 100%;
+            resize: none;
+            background-color: #1d1d1d;
+        }
+    </style>
+    <script>
+        var editor;
+        window.onload = function() {
+            editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: 'text/x-java',
+                theme: 'dracula',
+            });
+            editor.setSize(window.innerWidth, window.innerHeight);
+        };
+    </script>
+</head>
+<body>
+    <textarea id="code" name="code">
+
+    </textarea>
+</body>
+</html>
