@@ -1,0 +1,121 @@
+.background {
+    -fx-background-color: #1d1d1d;
+}
+
+.tree-view {
+    -fx-background-color: #1d1d1d;
+}
+
+.tree-cell {
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: derive(#1d1d1d, 90%);
+}
+
+.tree-cell:selected {
+    -fx-background-color: #353535;
+    -fx-text-fill: white;
+}
+
+.tool-bar {
+    -fx-background-color: derive(#1d1d1d, 20%);
+}
+
+.tab {
+    -fx-background-color: #4A4A4A;
+    -fx-text-fill: white;
+}
+
+.tab .tab-label {
+    -fx-background-color: #4A4A4A;
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+}
+
+.tab-pane {
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: grey;
+}
+
+.tab-pane *.tab-header-background {
+    -fx-background-color: #1d1d1d;
+}
+
+.label {
+    -fx-font-size: 11px;
+    -fx-text-fill: white;
+    -fx-opacity: 0.6;
+}
+
+.label-bright {
+    -fx-font-size: 11px;
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.label-header {
+    -fx-font-size: 32px;
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.table-view {
+    -fx-base: #1d1d1d;
+    -fx-control-inner-background: #1d1d1d;
+    -fx-background-color: #1d1d1d;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #1d1d1d;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: #1d1d1d;
+    -fx-border-color: #1d1d1d;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 20pt;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-border-color: transparent #1d1d1d transparent #1d1d1d;
+    -fx-background-color: transparent, derive(#1d1d1d,20%);
+}
+
+.split-pane {
+    -fx-padding: 2 0 0 0;
+    -fx-background-color: derive(#1d1d1d, 20%);
+}
+
+.menu-bar {
+    -fx-background-color: #1d1d1d;
+}
+
+.context-menu {
+    -fx-background-color: #1d1d1d;
+}
+
+.menu-bar .label {
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.menu .left-container {
+    -fx-background-color: black;
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    color: white;
+}

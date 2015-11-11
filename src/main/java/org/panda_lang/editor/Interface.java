@@ -30,14 +30,14 @@ public class Interface implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Editor.instance.initAnInterface(this);
 
-        menuFileOpenFile.setOnAction(event1 -> {
+        menuFileOpenFile.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showOpenDialog(Editor.instance.getStage());
             if (file != null) {
                 tree.open(file);
             }
         });
-        menuFileOpenFolder.setOnAction(event1 -> {
+        menuFileOpenFolder.setOnAction(event -> {
             DirectoryChooser fileChooser = new DirectoryChooser();
             File file = fileChooser.showDialog(Editor.instance.getStage());
             if (file != null) {

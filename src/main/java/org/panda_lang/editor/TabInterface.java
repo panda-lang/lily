@@ -1,5 +1,6 @@
 package org.panda_lang.editor;
 
+import javafx.concurrent.Worker;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,6 +42,8 @@ public class TabInterface implements Initializable {
     }
 
     public void run(TabPane pane, File file) {
+        if(file == null) return;
+
         // {resources}
         String content = IOUtils.getContent(file);
         content = content.replace("'", "\\'");
@@ -60,6 +63,7 @@ public class TabInterface implements Initializable {
 
         // {add}
         pane.getTabs().add(tab);
+        pane.getSelectionModel().select(tab);
 
         // {accelerators}
         webView.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY), () -> {
@@ -69,7 +73,15 @@ public class TabInterface implements Initializable {
             changes = false;
         });
 
-        engine.executeScript("source = '" + content + "';");
+        // {source}
+        final String source = content;
+        engine.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
+            switch (newState) {
+                case SUCCEEDED:
+                    engine.executeScript("editor.setValue('" + source + "');");
+                    break;
+            }
+        });
     }
 
 }

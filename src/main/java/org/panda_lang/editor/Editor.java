@@ -22,6 +22,7 @@ public class Editor extends Application {
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/interface.fxml"));
+        //root.getStylesheets().add("/css/dark.css");
         Scene scene = new Scene(root, bounds.getWidth(), bounds.getHeight());
 
         stage.setX(bounds.getMinX());

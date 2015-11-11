@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Area</title>
+    <link rel="stylesheet" href="./cm/default.css">
+    <link rel="stylesheet" href="./cm/dracula.css">
+    <script src="http://codemirror.net/lib/codemirror.js"></script>
+    <script src="http://codemirror.net/mode/clike/clike.js"></script>
     <style>
         html, body {
             margin: 0px;
@@ -11,41 +15,26 @@
         }
 
         body textarea {
-            width: 99.5%;
-            height: 99.4%;
-            font-family: Consolas;
+            width: 100%;
+            min-height: 100%;
             resize: none;
         }
     </style>
-    <script>
-        var source;
-        var load;
-
-        function setSource(s) {
-            source = s;
-            if(load) {
-                document.getElementById('area').value = source;
-            }
-        }
-
-        function getSource() {
-            return source;
-        }
-
-        function update() {
-            setSource(source);
-        }
-
-        window.onload = function() {
-            load = true;
-            document.getElementById('area').value = source;
-        }
-
-    </script>
 </head>
 <body>
-    <textarea id="area">
+    <textarea id="code" name="code"></textarea>
+    <script>
+        var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: 'text/x-java',
+            theme: 'dracula',
+        });
+        editor.setSize(window.innerWidth, window.innerHeight);
 
-    </textarea>
+        function getSource() {
+            return editor.getValue();
+        }
+    </script>
 </body>
 </html>

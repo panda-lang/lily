@@ -47,17 +47,6 @@
             <TreeView fx:id="filesTree" editable="true" prefHeight="200.0" prefWidth="200.0" />
             <TabPane fx:id="tabPane" prefHeight="353.0" prefWidth="130.0" tabClosingPolicy="SELECTED_TAB">
               <tabs>
-                  <!--
-                <Tab text="Hello Panda">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TextArea layoutX="-3.0" layoutY="-16.0" prefHeight="340.0" prefWidth="481.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
-                -->
               </tabs>
             </TabPane>
          </items>
