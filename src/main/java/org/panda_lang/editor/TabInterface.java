@@ -29,11 +29,7 @@ public class TabInterface implements Initializable {
     static {
         ResourcesBuilder resourcesBuilder = new ResourcesBuilder(Editor.class);
         resourcesBuilder.importCss("/html/cm/codemirror.min.css");
-        resourcesBuilder.importCss("/html/cm/default.min.css");
-        resourcesBuilder.importCss("/html/cm/dracula.min.css");
         resourcesBuilder.importScript("/html/cm/codemirror.min.js");
-        resourcesBuilder.importScript("/html/cm/clike.min.js");
-
         template = IOUtils.convertStreamToString(Editor.class.getResourceAsStream("/html/tab.html"))
                 .replace("${imports}", resourcesBuilder.toString());
     }
@@ -54,25 +50,17 @@ public class TabInterface implements Initializable {
     public void run(TabPane pane, File file) {
         if(file == null) return;
 
-        // {resources}
-        String content = IOUtils.getContent(file);
-        content = content.replace("'", "\\'");
-        content = content.replace(System.getProperty("line.separator"), "\\n");
-        content = content.replace("\n", "\\n");
-        content = content.replace("\r", "\\n");
-
-        // {initData}
-        engine.loadContent(template);
-        webView.setUserData(file);
-
         // {tab.anem}
         this.title = file.getName();
         tab.setText(title);
 
+        // {initData}
+        engine.loadContent(template.replace("${code}", IOUtils.getContent(file)));
+        webView.setUserData(file);
+
         // {add}
         pane.getTabs().add(tab);
         pane.getSelectionModel().select(tab);
-        int selected = pane.getSelectionModel().getSelectedIndex();
 
         // {accelerators}
         webView.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY), () -> {
@@ -82,17 +70,6 @@ public class TabInterface implements Initializable {
             changes = false;
         });
 
-        // {source}
-        final String source = content;
-        engine.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
-            switch (newState) {
-                case SUCCEEDED:
-                    if (!pane.getSelectionModel().isSelected(selected)) return;
-                    webView.setVisible(true);
-                    engine.executeScript("editor.setValue('" + source + "')");
-                    break;
-            }
-        });
     }
 
 }
