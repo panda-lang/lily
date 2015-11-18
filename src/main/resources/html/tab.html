@@ -6,17 +6,18 @@
     ${imports}
     <style>
         html, body {
-        margin: 0px;
-        width: 100%;
-        height: 100%;
-        background-color: #1d1d1d;
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: #1d1d1d;
+            overflow: hidden;
         }
 
         body textarea {
-        width: 100%;
-        min-height: 100%;
-        resize: none;
-        background-color: #1d1d1d;
+            width: 100%;
+            min-height: 100%;
+            resize: none;
+            background-color: #1d1d1d;
         }
     </style>
 </head>
@@ -32,7 +33,20 @@ ${code}
             mode: 'text/x-java',
             theme: 'dracula',
         });
-        editor.setSize(window.innerWidth, window.innerHeight);
+
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        editor.setSize(width, height);
+
+        setInterval(function() {
+            if(editor) {
+                if(window.innerWidth != width || window.innerHeight != height) {
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                    editor.setSize(width, height);
+                }
+            }
+        }, 50);
     </script>
 </body>
 </html>

@@ -21,14 +21,18 @@
 }
 
 .tab {
-    -fx-background-color: #4A4A4A;
+    -fx-background-color: derive(#1d1d1d, 20%);
     -fx-text-fill: white;
 }
 
 .tab .tab-label {
-    -fx-background-color: #4A4A4A;
+    -fx-background-color: derive(#1d1d1d, 20%);
     -fx-alignment: CENTER;
     -fx-text-fill: white;
+}
+
+.tab-content-area {
+    -fx-background-color: #282a36;
 }
 
 .tab-pane {
@@ -118,4 +122,8 @@
 .text-field {
     -fx-font-size: 12pt;
     color: white;
+}
+
+.web-view {
+    -fx-background-color: #282a36;
 }
