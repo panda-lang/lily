@@ -1,6 +1,5 @@
 package org.panda_lang.editor;
 
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
@@ -46,7 +45,7 @@ public class Explorer {
     private void findFiles(File dir, TreeItem<String> parent) {
         TreeItem<String> root = new TreeItem<>(" " + dir.getName());
 
-        if(dir.isFile()) {
+        if (dir.isFile()) {
             addFile(root, dir);
         } else {
             File[] files = dir.listFiles();

@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
@@ -22,12 +24,18 @@ import java.util.ResourceBundle;
 
 public class Interface implements Initializable {
 
-    @FXML private MenuItem menuFileOpenFile;
-    @FXML private MenuItem menuFileOpenFolder;
-    @FXML private MenuItem menuFileExit;
-    @FXML private MenuItem menuHelpAbout;
-    @FXML private TreeView<String> filesTree;
-    @FXML private TabPane tabPane;
+    @FXML
+    private MenuItem menuFileOpenFile;
+    @FXML
+    private MenuItem menuFileOpenFolder;
+    @FXML
+    private MenuItem menuFileExit;
+    @FXML
+    private MenuItem menuHelpAbout;
+    @FXML
+    private TreeView<String> filesTree;
+    @FXML
+    private TabPane tabPane;
 
     private Explorer tree;
     private List<TabInterface> tabs;

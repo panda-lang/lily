@@ -1,8 +1,5 @@
 package org.panda_lang.editor;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
@@ -24,8 +21,10 @@ public class TabInterface implements Initializable {
 
     private static final String template;
 
-    @FXML private Tab tab;
-    @FXML private WebView webView;
+    @FXML
+    private Tab tab;
+    @FXML
+    private WebView webView;
 
     private String title;
     private WebEngine engine;
@@ -49,14 +48,14 @@ public class TabInterface implements Initializable {
 
         // {events}
         webView.setOnKeyPressed(key -> {
-            if(changes) return;
+            if (changes) return;
             tab.setText(title + " *");
             changes = true;
         });
     }
 
     public void run(TabPane pane, File file) {
-        if(file == null) return;
+        if (file == null) return;
 
         // {tab.anem}
         this.title = file.getName();
