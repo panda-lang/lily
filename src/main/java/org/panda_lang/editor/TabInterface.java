@@ -11,7 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import org.pandalang.panda.util.IOUtils;
+import org.panda_lang.panda.util.IOUtils;
 
 import java.io.File;
 import java.net.URL;
