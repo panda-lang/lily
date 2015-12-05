@@ -13,7 +13,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.panda_lang.panda.Panda;
+import org.pandalang.panda.Panda;
 
 import java.io.File;
 import java.io.IOException;
