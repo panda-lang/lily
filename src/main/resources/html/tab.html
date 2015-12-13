@@ -6,18 +6,18 @@
     ${imports}
     <style>
         html, body {
-        margin: 0px;
-        width: 100%;
-        height: 100%;
-        background-color: #1d1d1d;
-        overflow: hidden;
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: #1d1d1d;
+            overflow: hidden;
         }
 
         body textarea {
-        width: 100%;
-        min-height: 100%;
-        resize: none;
-        background-color: #1d1d1d;
+            width: 100%;
+            min-height: 100%;
+            resize: none;
+            background-color: #1d1d1d;
         }
     </style>
 </head>
@@ -26,28 +26,48 @@
 ${code}
 </textarea>
 <script>
-        var source;
-        var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
-            lineNumbers: true,
-            matchBrackets: true,
-            mode: 'text/x-java',
-            theme: 'dracula',
-        });
+    CodeMirror.commands.autocomplete = function(cm) {
+        cm.showHint({hint: CodeMirror.hint.anyword});
+    }
 
-        var width = window.innerWidth;
-        var height = window.innerHeight;
-        editor.setSize(width, height);
-
-        setInterval(function() {
-            if(editor) {
-                if(window.innerWidth != width || window.innerHeight != height) {
-                    width = window.innerWidth;
-                    height = window.innerHeight;
-                    editor.setSize(width, height);
-                }
+    var source;
+    var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+        mode: 'text/x-java',
+        theme: 'dracula',
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        indentAuto: false,
+        smartIndent: false,
+        /*
+        extraKeys: {
+            Tab: function(cm) {
+                var spaces = Array(5).join(" ");
+                cm.replaceSelection(spaces);
             }
-        }, 50);
+        }
+        */
+    });
 
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    editor.setSize(width, height);
+
+    editor.on('inputRead', function(cm, event){
+        if (!cm.state.completionActive && event.keyCode != 13) {
+            CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
+        }
+    });
+
+    setInterval(function() {
+        if(editor) {
+            if(window.innerWidth != width || window.innerHeight != height) {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                editor.setSize(width, height);
+            }
+        }
+    }, 50);
 </script>
 </body>
 </html>
