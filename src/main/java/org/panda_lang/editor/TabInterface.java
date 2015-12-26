@@ -65,7 +65,7 @@ public class TabInterface implements Initializable {
         engine.setJavaScriptEnabled(true);
 
         // {initData}
-        engine.loadContent(template.replace("${code}", IOUtils.getContent(file)));
+        engine.loadContent(template.replace("${code}", IOUtils.getContentOfFile(file)));
         webView.setUserData(file);
 
         // {add}
