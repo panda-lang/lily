@@ -33,10 +33,10 @@ public class TabInterface implements Initializable {
 
     static {
         ResourcesBuilder resourcesBuilder = new ResourcesBuilder(Editor.class);
-        resourcesBuilder.importCss("/html/cm/codemirror.min.css");
-        resourcesBuilder.importScript("/html/cm/codemirror.min.js");
-        template = IOUtils.convertStreamToString(Editor.class.getResourceAsStream("/html/tab.html"))
-                .replace("${imports}", resourcesBuilder.toString());
+        resourcesBuilder.importCss("/cm/codemirror.min.css");
+        resourcesBuilder.importScript("/cm/codemirror.min.js");
+        template = IOUtils.convertStreamToString(Editor.class.getResourceAsStream("/cm/tab.html"))
+                .replace("{imports}", resourcesBuilder.toString());
     }
 
     @Override
@@ -65,7 +65,8 @@ public class TabInterface implements Initializable {
         engine.setJavaScriptEnabled(true);
 
         // {initData}
-        engine.loadContent(template.replace("${code}", IOUtils.getContentOfFile(file)));
+        String source = template.replace("{code}", IOUtils.getContentOfFile(file));
+        engine.loadContent(source);
         webView.setUserData(file);
 
         // {add}

@@ -24,18 +24,12 @@ import java.util.ResourceBundle;
 
 public class Interface implements Initializable {
 
-    @FXML
-    private MenuItem menuFileOpenFile;
-    @FXML
-    private MenuItem menuFileOpenFolder;
-    @FXML
-    private MenuItem menuFileExit;
-    @FXML
-    private MenuItem menuHelpAbout;
-    @FXML
-    private TreeView<String> filesTree;
-    @FXML
-    private TabPane tabPane;
+    @FXML private MenuItem menuFileOpenFile;
+    @FXML private MenuItem menuFileOpenFolder;
+    @FXML private MenuItem menuFileExit;
+    @FXML private MenuItem menuHelpAbout;
+    @FXML private TreeView<String> filesTree;
+    @FXML private TabPane tabPane;
 
     private Explorer tree;
     private List<TabInterface> tabs;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Tab</title>
-    ${imports}
+    {imports}
     <style>
         html, body {
             margin: 0px;
@@ -23,7 +23,7 @@
 </head>
 <body>
 <textarea id="code" name="code">
-${code}
+{code}
 </textarea>
 <script>
     CodeMirror.commands.autocomplete = function(cm) {
@@ -39,14 +39,6 @@ ${code}
         autoCloseBrackets: true,
         indentAuto: false,
         smartIndent: false,
-        /*
-        extraKeys: {
-            Tab: function(cm) {
-                var spaces = Array(5).join(" ");
-                cm.replaceSelection(spaces);
-            }
-        }
-        */
     });
 
     var width = window.innerWidth;
