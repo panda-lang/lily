@@ -30,7 +30,7 @@ public class Editor extends Application {
         stage.setX((bounds.getWidth() - stage.getWidth()) / 2);
         stage.setY((bounds.getHeight() - stage.getHeight()) / 2);
 
-        stage.setTitle("Panda Editor");
+        stage.setTitle("Panda IDE");
         stage.setScene(scene);
 
         stage.show();
@@ -47,8 +47,6 @@ public class Editor extends Application {
     public Stage getStage() {
         return this.stage;
     }
-
-
 
 
     public static void main(String[] args) throws Exception {
