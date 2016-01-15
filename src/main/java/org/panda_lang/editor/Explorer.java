@@ -19,7 +19,7 @@ public class Explorer {
     public Explorer(TreeView<String> tree) {
         this.tree = tree;
         this.files = new HashMap<>();
-        this.defaultFileIcon = new Image(getClass().getResourceAsStream("/icons/defaultFileIcon.png"));
+        this.defaultFileIcon = new Image(getClass().getResourceAsStream("/icons/material_defaultFileIcon.png"));
         this.defaultFolderIcon = new Image(getClass().getResourceAsStream("/icons/defaultFolderIcon.png"));
 
         this.tree.setOnMouseClicked(mouseEvent -> {
@@ -36,14 +36,14 @@ public class Explorer {
     }
 
     private void addFile(TreeItem<String> root, File file) {
-        TreeItem<String> item = new TreeItem<>(" " + file.getName());
+        TreeItem<String> item = new TreeItem<>(file.getName());
         item.setGraphic(new ImageView(defaultFileIcon));
         root.getChildren().add(item);
         files.put(item, file);
     }
 
     private void findFiles(File dir, TreeItem<String> parent) {
-        TreeItem<String> root = new TreeItem<>(" " + dir.getName());
+        TreeItem<String> root = new TreeItem<>(dir.getName());
 
         if (dir.isFile()) {
             addFile(root, dir);

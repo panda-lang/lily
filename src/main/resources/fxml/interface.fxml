@@ -5,25 +5,10 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.panda_lang.editor.Interface">
-    <bottom>
-        <ToolBar fx:id="toolBar" prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER"/>
-    </bottom>
-    <center>
-        <SplitPane fx:id="splitPane" dividerPositions="0.1" prefHeight="200.0" prefWidth="600.0"
-                   BorderPane.alignment="CENTER">
-            <items>
-                <TreeView fx:id="filesTree" editable="true" prefHeight="200.0" prefWidth="100.0"/>
-                <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="500.0" tabClosingPolicy="SELECTED_TAB">
-                    <tabs>
-                    </tabs>
-                </TabPane>
-            </items>
-        </SplitPane>
-    </center>
     <top>
         <BorderPane prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <top>
-                <MenuBar BorderPane.alignment="CENTER">
+                <MenuBar fx:id="menuBar" prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                     <menus>
                         <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
                             <items>
@@ -72,23 +57,23 @@
                 </MenuBar>
             </top>
             <bottom>
-                <BorderPane prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                <BorderPane prefHeight="30.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                     <left>
-                        <ToolBar fx:id="path" prefHeight="20.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                        <ToolBar fx:id="path" prefHeight="30.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                             <items>
 
                             </items>
                         </ToolBar>
                     </left>
                     <right>
-                        <ToolBar fx:id="gap" prefHeight="20.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                        <ToolBar fx:id="gap" prefHeight="30.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                             <items>
 
                             </items>
                         </ToolBar>
                     </right>
                     <center>
-                        <ToolBar fx:id="controls" prefHeight="20.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <ToolBar fx:id="controls" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <items>
 
                             </items>
@@ -98,4 +83,19 @@
             </bottom>
         </BorderPane>
     </top>
+    <bottom>
+        <ToolBar fx:id="toolBar" prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER"/>
+    </bottom>
+    <center>
+        <SplitPane fx:id="splitPane" dividerPositions="0.1" prefHeight="200.0" prefWidth="600.0"
+                   BorderPane.alignment="CENTER">
+            <items>
+                <TreeView fx:id="filesTree" editable="true" prefHeight="200.0" prefWidth="100.0"/>
+                <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="500.0" tabClosingPolicy="SELECTED_TAB">
+                    <tabs>
+                    </tabs>
+                </TabPane>
+            </items>
+        </SplitPane>
+    </center>
 </BorderPane>

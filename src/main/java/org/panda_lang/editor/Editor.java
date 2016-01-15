@@ -23,7 +23,7 @@ public class Editor extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/interface.fxml"));
         Scene scene = new Scene(root, bounds.getWidth() * 0.6, bounds.getHeight() * 0.5);
-        root.getStylesheets().add("/css/dark.css");
+        root.getStylesheets().add("/css/material.css");
 
         stage.setWidth(bounds.getWidth() * 0.9);
         stage.setHeight(bounds.getHeight() * 0.8);

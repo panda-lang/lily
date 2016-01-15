@@ -1,0 +1,46 @@
+
+.menu-bar {
+    -fx-background-color: #212121;
+}
+
+.menu .label {
+    -fx-text-fill: #B2BFCE;
+}
+
+.menu:focused .label {
+    -fx-background-color: #212121;
+}
+
+.tool-bar {
+    -fx-background-color: #212121;
+    -fx-border-width: 1px 0px 0px 0px;
+    -fx-border-color: #2c2c2c #2c2c2c #2c2c2c #2c2c2c;
+}
+
+.split-pane {
+    -fx-margin: 0px;
+    -fx-padding: 0px;
+    -fx-border-width: 1px 0px 0px 0px;
+    -fx-border-color: #2c2c2c #2c2c2c #2c2c2c #2c2c2c;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-padding: 0 0 0 0;
+    -fx-border-color: #212121;
+    -fx-background-color: #212121;
+}
+
+.table-view {
+    -fx-base: #212121;
+    -fx-background-color: #212121;
+}
+
+.tree-cell {
+    -fx-text-fill: #B2BFCE;
+    -fx-background-color: #212121;
+}
+
+.tab-pane {
+    -fx-background-color: #282829;
+    -fx-border-width: 0px 0px 0px 0px;
+}
