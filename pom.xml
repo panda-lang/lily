@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.panda_lang</groupId>
-    <artifactId>peditor</artifactId>
+    <artifactId>lily</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Panda Editor</name>
-    <description>Editor for Panda Language</description>
+    <name>Lily</name>
+    <description>Lily the Panda IDE</description>
     <url>http://panda-lang.org/</url>
 
     <licenses>
@@ -80,7 +80,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.panda_lang.editor.Lily</mainClass>
+                            <mainClass>org.panda_lang.lily.Lily</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

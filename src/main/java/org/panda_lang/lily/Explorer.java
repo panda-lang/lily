@@ -1,4 +1,4 @@
-package org.panda_lang.editor;
+package org.panda_lang.lily;
 
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;

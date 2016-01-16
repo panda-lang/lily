@@ -1,4 +1,4 @@
-package org.panda_lang.editor;
+package org.panda_lang.lily;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

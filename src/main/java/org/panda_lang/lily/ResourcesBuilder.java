@@ -1,4 +1,4 @@
-package org.panda_lang.editor;
+package org.panda_lang.lily;
 
 public class ResourcesBuilder {
 
