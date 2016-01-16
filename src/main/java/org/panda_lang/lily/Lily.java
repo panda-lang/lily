@@ -30,7 +30,7 @@ public class Lily extends Application {
         stage.setX((bounds.getWidth() - stage.getWidth()) / 2);
         stage.setY((bounds.getHeight() - stage.getHeight()) / 2);
 
-        stage.setTitle("Lily");
+        stage.setTitle("Lily the Panda IDE");
         stage.setScene(scene);
 
         stage.show();

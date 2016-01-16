@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.WebView?>
 <Tab fx:id="tab" text="Untitled" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-     fx:controller="org.panda_lang.editor.TabInterface">
+     fx:controller="org.panda_lang.lily.TabInterface">
     <content>
         <AnchorPane fx:id="anchorPane">
             <WebView fx:id="webView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
