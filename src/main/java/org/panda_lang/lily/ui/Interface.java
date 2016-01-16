@@ -1,18 +1,21 @@
-package org.panda_lang.lily;
+package org.panda_lang.lily.ui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.KeyCharacterCombination;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.panda_lang.lily.Lily;
 import org.panda_lang.panda.Panda;
 
 import java.io.File;
@@ -27,18 +30,29 @@ public class Interface implements Initializable {
     @FXML private MenuItem menuFileOpenFile;
     @FXML private MenuItem menuFileOpenFolder;
     @FXML private MenuItem menuFileExit;
+    @FXML private MenuItem menuEditUndo;
+    @FXML private MenuItem menuRunRun;
     @FXML private MenuItem menuHelpAbout;
+    @FXML private SplitPane splitPane;
     @FXML private TreeView<String> filesTree;
     @FXML private TabPane tabPane;
 
-    private Explorer tree;
-    private List<TabInterface> tabs;
-    private TabInterface currentTab;
+    private ProjectTree tree;
+    private List<EditorTab> tabs;
+    private EditorTab currentTab;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Initialize Interface
         Lily.instance.initAnInterface(this);
 
+        // Extend
+        extend(menuFileOpenFolder);
+        extend(menuEditUndo);
+        extend(menuRunRun);
+        extend(menuHelpAbout);
+
+        // Action: File -> Open
         menuFileOpenFile.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showOpenDialog(Lily.instance.getStage());
@@ -46,6 +60,7 @@ public class Interface implements Initializable {
                 tree.open(file);
             }
         });
+        // Action: File -> Open folder
         menuFileOpenFolder.setOnAction(event -> {
             DirectoryChooser fileChooser = new DirectoryChooser();
             File file = fileChooser.showDialog(Lily.instance.getStage());
@@ -53,7 +68,9 @@ public class Interface implements Initializable {
                 tree.open(file);
             }
         });
+        // Action: File -> Exit
         menuFileExit.setOnAction(event -> System.exit(-1));
+        // Action: Help -> About
         menuHelpAbout.setOnAction(event -> {
             Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
@@ -66,16 +83,36 @@ public class Interface implements Initializable {
             dialog.show();
         });
 
+        // SplitPane
+        this.splitPane.setDividerPositions(0.25, 0.75);
+
+        // EditorTabs
         this.tabs = new ArrayList<>();
-        this.tree = new Explorer(filesTree);
+
+        // ProjectTree
+        this.tree = new ProjectTree(filesTree);
         this.tree.open(new File("./"));
+    }
+
+    private void accelerator(MenuItem menuItem, String accelerator) {
+        menuItem.setAccelerator(new KeyCharacterCombination(accelerator));
+    }
+
+    private void extend(MenuItem menuItem) {
+        String currentName = menuItem.getText();
+        StringBuilder builder = new StringBuilder(currentName);
+        int required = 50 - currentName.length();
+        for (int i = 0; i < required; i++) {
+            builder.append(' ');
+        }
+        menuItem.setText(builder.toString());
     }
 
     public void displayFile(File file) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/tab.fxml"));
             loader.load();
-            TabInterface ti = loader.getController();
+            EditorTab ti = loader.getController();
             tabs.add(ti);
             ti.run(tabPane, file);
             currentTab = ti;
@@ -84,11 +121,11 @@ public class Interface implements Initializable {
         }
     }
 
-    public TabInterface getCurrentTab() {
+    public EditorTab getCurrentTab() {
         return currentTab;
     }
 
-    public List<TabInterface> getTabs() {
+    public List<EditorTab> getTabs() {
         return tabs;
     }
 

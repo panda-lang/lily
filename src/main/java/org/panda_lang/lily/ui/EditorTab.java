@@ -1,4 +1,4 @@
-package org.panda_lang.lily;
+package org.panda_lang.lily.ui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,13 +11,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import org.panda_lang.lily.Lily;
+import org.panda_lang.lily.util.ResourcesBuilder;
 import org.panda_lang.panda.util.IOUtils;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TabInterface implements Initializable {
+public class EditorTab implements Initializable {
 
     private static final String template;
 
@@ -30,7 +32,8 @@ public class TabInterface implements Initializable {
     private boolean succeeded;
 
     static {
-        ResourcesBuilder resourcesBuilder = new ResourcesBuilder(Lily.class);
+        // Initialize template
+        ResourcesBuilder resourcesBuilder = new ResourcesBuilder();
         resourcesBuilder.importCss("/cm/codemirror.min.css");
         resourcesBuilder.importScript("/cm/codemirror.min.js");
         template = IOUtils.convertStreamToString(Lily.class.getResourceAsStream("/cm/tab.html"))
@@ -39,12 +42,13 @@ public class TabInterface implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Style
         engine = webView.getEngine();
         webView.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent; android:scrollbars=none");
         GridPane.setHgrow(webView, Priority.ALWAYS);
         GridPane.setVgrow(webView, Priority.ALWAYS);
 
-        // {events}
+        // Events
         webView.setOnKeyPressed(key -> {
             if (changes) return;
             tab.setText(title + " *");
@@ -55,23 +59,24 @@ public class TabInterface implements Initializable {
     public void run(TabPane pane, File file) {
         if (file == null) return;
 
-        // {tab.anem}
+        // Tab Settings
         this.title = file.getName();
         tab.setText(title);
 
+        // Engine settings
         webView.setVisible(true);
         engine.setJavaScriptEnabled(true);
 
-        // {initData}
+        // Load content
         String source = template.replace("{code}", IOUtils.getContentOfFile(file));
         engine.loadContent(source);
         webView.setUserData(file);
 
-        // {add}
+        // Tabs
         pane.getTabs().add(tab);
         pane.getSelectionModel().select(tab);
 
-        // {accelerators}
+        // Accelerators
         webView.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY), () -> {
             File f = (File) webView.getUserData();
             IOUtils.overrideFile(f, (String) engine.executeScript("editor.getValue()"));
@@ -79,6 +84,7 @@ public class TabInterface implements Initializable {
             changes = false;
         });
 
+        // State listener
         engine.getLoadWorker().stateProperty().addListener((obs, oldValue, newValue) -> {
             switch (newValue) {
                 case SUCCEEDED: {

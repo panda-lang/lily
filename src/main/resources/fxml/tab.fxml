@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.web.WebView?>
-<Tab fx:id="tab" text="Untitled" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-     fx:controller="org.panda_lang.lily.TabInterface">
+<?import javafx.scene.control.Tab?><?import javafx.scene.layout.*?><?import javafx.scene.web.WebView?>
+<Tab fx:id="tab" text="Untitled" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panda_lang.lily.ui.EditorTab">
     <content>
         <AnchorPane fx:id="anchorPane">
-            <WebView fx:id="webView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                     AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+            <WebView fx:id="webView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
         </AnchorPane>
     </content>
 </Tab>

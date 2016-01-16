@@ -1,12 +1,12 @@
-package org.panda_lang.lily;
+package org.panda_lang.lily.util;
+
+import org.panda_lang.lily.Lily;
 
 public class ResourcesBuilder {
 
-    private final Class clazz;
     private final StringBuilder stringBuilder;
 
-    public ResourcesBuilder(Class clazz) {
-        this.clazz = clazz;
+    public ResourcesBuilder() {
         this.stringBuilder = new StringBuilder();
     }
 
@@ -24,7 +24,7 @@ public class ResourcesBuilder {
 
     @Override
     public String toString() {
-        return this.stringBuilder.toString();
+        return stringBuilder.toString();
     }
 
 }

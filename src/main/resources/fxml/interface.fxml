@@ -1,101 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.panda_lang.lily.Interface">
+<?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panda_lang.lily.ui.Interface">
     <top>
-        <BorderPane prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <BorderPane prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <top>
-                <MenuBar fx:id="menuBar" prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                <MenuBar fx:id="menuBar" prefHeight="20.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                     <menus>
                         <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem fx:id="menuFileNew" accelerator="Ctrl + N" mnemonicParsing="false"
-                                          text="New                                    "/>
+                                <MenuItem fx:id="menuFileNew" accelerator="Ctrl + N" mnemonicParsing="false" text="New"/>
                                 <MenuItem fx:id="menuFileOpenFile" mnemonicParsing="false" text="Open File..."/>
                                 <MenuItem fx:id="menuFileOpenFolder" mnemonicParsing="false" text="Open Folder..."/>
                                 <MenuItem fx:id="menuFileSettings" mnemonicParsing="false" text="Settings"/>
-                                <MenuItem fx:id="menuFileSaveAll" accelerator="Ctrl + S" mnemonicParsing="false"
-                                          text="Save All"/>
+                                <MenuItem fx:id="menuFileSaveAll" accelerator="Ctrl + S" mnemonicParsing="false" text="Save All"/>
                                 <MenuItem fx:id="menuFileExit" mnemonicParsing="false" text="Exit"/>
                             </items>
                         </Menu>
                         <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem fx:id="menuEditUndo" accelerator="Ctrl + Z" mnemonicParsing="false"
-                                          text="Undo"/>
-                                <MenuItem fx:id="menuEditRedo" accelerator="Ctrl + Shift + Z" mnemonicParsing="false"
-                                          text="Redo"/>
-                                <MenuItem fx:id="menuEditCut" accelerator="Ctrl + X" mnemonicParsing="false"
-                                          text="Cut                           "/>
-                                <MenuItem fx:id="menuEditCopy" accelerator="Ctrl + C" mnemonicParsing="false"
-                                          text="Copy"/>
-                                <MenuItem fx:id="menuEditPaste" accelerator="Ctrl + V" mnemonicParsing="false"
-                                          text="Paste"/>
-                                <MenuItem fx:id="menuEditFind" accelerator="Ctrl + F" mnemonicParsing="false"
-                                          text="Find"/>
-                                <MenuItem fx:id="menuEditSelectAll" accelerator="Ctrl + A" mnemonicParsing="false"
-                                          text="Select All"/>
+                                <MenuItem fx:id="menuEditUndo" accelerator="Ctrl + Z" mnemonicParsing="false" text="Undo"/>
+                                <MenuItem fx:id="menuEditRedo" accelerator="Ctrl + Shift + Z" mnemonicParsing="false" text="Redo"/>
+                                <MenuItem fx:id="menuEditCut" accelerator="Ctrl + X" mnemonicParsing="false" text="Cut"/>
+                                <MenuItem fx:id="menuEditCopy" accelerator="Ctrl + C" mnemonicParsing="false" text="Copy"/>
+                                <MenuItem fx:id="menuEditPaste" accelerator="Ctrl + V" mnemonicParsing="false" text="Paste"/>
+                                <MenuItem fx:id="menuEditFind" accelerator="Ctrl + F" mnemonicParsing="false" text="Find"/>
+                                <MenuItem fx:id="menuEditSelectAll" accelerator="Ctrl + A" mnemonicParsing="false" text="Select All"/>
                                 <MenuItem fx:id="menuEditDelete" mnemonicParsing="false" text="Delete"/>
                             </items>
                         </Menu>
                         <Menu fx:id="menuRun" mnemonicParsing="false" text="Run">
                             <items>
-                                <MenuItem fx:id="menuRunRun" mnemonicParsing="false"
-                                          text="Run                                 "/>
+                                <MenuItem fx:id="menuRunRun" accelerator="Ctrl + R" mnemonicParsing="false" text="Run"/>
                             </items>
                         </Menu>
                         <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem fx:id="menuHelpAbout" mnemonicParsing="false"
-                                          text="About Panda                         "/>
+                                <MenuItem fx:id="menuHelpAbout" mnemonicParsing="false" text="About Panda"/>
                             </items>
                         </Menu>
                     </menus>
                 </MenuBar>
             </top>
             <bottom>
-                <BorderPane prefHeight="30.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                <BorderPane prefHeight="30.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                     <left>
-                        <ToolBar fx:id="path" prefHeight="30.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                        <ToolBar fx:id="path" prefHeight="30.0" prefWidth="500.0" BorderPane.alignment="CENTER">
                             <items>
 
                             </items>
                         </ToolBar>
                     </left>
-                    <right>
-                        <ToolBar fx:id="gap" prefHeight="30.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                            <items>
-
-                            </items>
-                        </ToolBar>
-                    </right>
                     <center>
-                        <ToolBar fx:id="controls" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <ToolBar fx:id="controls" prefHeight="30.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                             <items>
 
                             </items>
                         </ToolBar>
                     </center>
+                    <right>
+                        <ToolBar fx:id="gap" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                            <items>
+
+                            </items>
+                        </ToolBar>
+                    </right>
                 </BorderPane>
             </bottom>
         </BorderPane>
     </top>
-    <bottom>
-        <ToolBar fx:id="toolBar" prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER"/>
-    </bottom>
     <center>
-        <SplitPane fx:id="splitPane" dividerPositions="0.1" prefHeight="200.0" prefWidth="600.0"
-                   BorderPane.alignment="CENTER">
+        <SplitPane fx:id="splitPane" dividerPositions="0.1" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <items>
-                <TreeView fx:id="filesTree" editable="true" prefHeight="200.0" prefWidth="100.0"/>
-                <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="500.0" tabClosingPolicy="SELECTED_TAB">
-                    <tabs>
-                    </tabs>
+                <TreeView fx:id="filesTree" editable="true" prefHeight="200.0" prefWidth="400.0"/>
+                <TabPane fx:id="tabPane" tabClosingPolicy="SELECTED_TAB" prefHeight="200.0" prefWidth="600.0">
+                    <tabs></tabs>
                 </TabPane>
             </items>
         </SplitPane>
     </center>
+    <bottom>
+        <ToolBar fx:id="toolBar" prefHeight="20.0" prefWidth="1000.0" BorderPane.alignment="CENTER"/>
+    </bottom>
 </BorderPane>

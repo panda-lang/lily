@@ -1,22 +1,23 @@
-package org.panda_lang.lily;
+package org.panda_lang.lily.ui;
 
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.panda_lang.lily.Lily;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Explorer {
+public class ProjectTree {
 
     private final TreeView<String> tree;
     private final Image defaultFileIcon;
     private final Image defaultFolderIcon;
     private final Map<TreeItem<String>, File> files;
 
-    public Explorer(TreeView<String> tree) {
+    public ProjectTree(TreeView<String> tree) {
         this.tree = tree;
         this.files = new HashMap<>();
         this.defaultFileIcon = new Image(getClass().getResourceAsStream("/icons/material_defaultFileIcon.png"));
