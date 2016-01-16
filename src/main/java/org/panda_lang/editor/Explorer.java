@@ -20,13 +20,13 @@ public class Explorer {
         this.tree = tree;
         this.files = new HashMap<>();
         this.defaultFileIcon = new Image(getClass().getResourceAsStream("/icons/material_defaultFileIcon.png"));
-        this.defaultFolderIcon = new Image(getClass().getResourceAsStream("/icons/defaultFolderIcon.png"));
+        this.defaultFolderIcon = new Image(getClass().getResourceAsStream("/icons/material_defaultFolderIcon.png"));
 
         this.tree.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getClickCount() == 2) {
                 TreeItem<String> item = tree.getSelectionModel().getSelectedItem();
                 File file = files.get(item);
-                Editor.instance.getInterface().displayFile(file);
+                Lily.instance.getInterface().displayFile(file);
             }
         });
     }

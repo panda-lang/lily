@@ -37,18 +37,18 @@ public class Interface implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Editor.instance.initAnInterface(this);
+        Lily.instance.initAnInterface(this);
 
         menuFileOpenFile.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
-            File file = fileChooser.showOpenDialog(Editor.instance.getStage());
+            File file = fileChooser.showOpenDialog(Lily.instance.getStage());
             if (file != null) {
                 tree.open(file);
             }
         });
         menuFileOpenFolder.setOnAction(event -> {
             DirectoryChooser fileChooser = new DirectoryChooser();
-            File file = fileChooser.showDialog(Editor.instance.getStage());
+            File file = fileChooser.showDialog(Lily.instance.getStage());
             if (file != null) {
                 tree.open(file);
             }
@@ -57,11 +57,11 @@ public class Interface implements Initializable {
         menuHelpAbout.setOnAction(event -> {
             Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.initOwner(Editor.instance.getStage());
-            VBox dialogVbox = new VBox(20);
-            Text text = new Text("  Panda Editor for Panda " + Panda.PANDA_VERSION);
-            dialogVbox.getChildren().add(text);
-            Scene dialogScene = new Scene(dialogVbox, text.getText().length() * 6.5, 30);
+            dialog.initOwner(Lily.instance.getStage());
+            VBox dialogVBox = new VBox(20);
+            Text text = new Text("Lily " + Panda.PANDA_VERSION);
+            dialogVBox.getChildren().add(text);
+            Scene dialogScene = new Scene(dialogVBox, text.getText().length() * 6.5, 30);
             dialog.setScene(dialogScene);
             dialog.show();
         });

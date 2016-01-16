@@ -8,9 +8,9 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-public class Editor extends Application {
+public class Lily extends Application {
 
-    public static Editor instance;
+    public static Lily instance;
     private Stage stage;
     private Interface anInterface;
 
@@ -22,15 +22,15 @@ public class Editor extends Application {
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/interface.fxml"));
-        Scene scene = new Scene(root, bounds.getWidth() * 0.6, bounds.getHeight() * 0.5);
+        Scene scene = new Scene(root, bounds.getWidth() - 20, bounds.getHeight() * 0.5);
         root.getStylesheets().add("/css/material.css");
 
-        stage.setWidth(bounds.getWidth() * 0.9);
+        stage.setWidth(bounds.getWidth() - 20);
         stage.setHeight(bounds.getHeight() * 0.8);
         stage.setX((bounds.getWidth() - stage.getWidth()) / 2);
         stage.setY((bounds.getHeight() - stage.getHeight()) / 2);
 
-        stage.setTitle("Panda IDE");
+        stage.setTitle("Lily");
         stage.setScene(scene);
 
         stage.show();

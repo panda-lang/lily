@@ -12,13 +12,13 @@ public class ResourcesBuilder {
 
     public void importCss(String file) {
         stringBuilder.append("<link rel=\"stylesheet\" href=\"");
-        stringBuilder.append(Editor.class.getResource(file).toExternalForm());
+        stringBuilder.append(Lily.class.getResource(file).toExternalForm());
         stringBuilder.append("\">");
     }
 
     public void importScript(String file) {
         stringBuilder.append("<script src=\"");
-        stringBuilder.append(Editor.class.getResource(file).toExternalForm());
+        stringBuilder.append(Lily.class.getResource(file).toExternalForm());
         stringBuilder.append("\"></script>");
     }
 

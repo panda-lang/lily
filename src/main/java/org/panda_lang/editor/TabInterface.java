@@ -21,10 +21,8 @@ public class TabInterface implements Initializable {
 
     private static final String template;
 
-    @FXML
-    private Tab tab;
-    @FXML
-    private WebView webView;
+    @FXML private Tab tab;
+    @FXML private WebView webView;
 
     private String title;
     private WebEngine engine;
@@ -32,10 +30,10 @@ public class TabInterface implements Initializable {
     private boolean succeeded;
 
     static {
-        ResourcesBuilder resourcesBuilder = new ResourcesBuilder(Editor.class);
+        ResourcesBuilder resourcesBuilder = new ResourcesBuilder(Lily.class);
         resourcesBuilder.importCss("/cm/codemirror.min.css");
         resourcesBuilder.importScript("/cm/codemirror.min.js");
-        template = IOUtils.convertStreamToString(Editor.class.getResourceAsStream("/cm/tab.html"))
+        template = IOUtils.convertStreamToString(Lily.class.getResourceAsStream("/cm/tab.html"))
                 .replace("{imports}", resourcesBuilder.toString());
     }
 

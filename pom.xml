@@ -80,7 +80,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.panda_lang.editor.Editor</mainClass>
+                            <mainClass>org.panda_lang.editor.Lily</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
