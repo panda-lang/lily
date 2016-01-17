@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab</title>
+    {imports}
+    <style>
+        html, body {
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: #1d1d1d;
+            overflow: hidden;
+        }
+
+        body textarea {
+            width: 100%;
+            min-height: 100%;
+            resize: none;
+            background-color: #1d1d1d;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="code" name="code">{code}</textarea>
+    <script>
+        CodeMirror.commands.autocomplete = function(cm) {
+            cm.showHint({hint: CodeMirror.hint.anyword});
+        }
+
+        var source;
+        var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+            theme: 'lily',
+            lineNumbers: true,
+            matchBrackets: true,
+            autoCloseBrackets: true,
+            indentAuto: false,
+            smartIndent: false,
+        });
+
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        editor.setSize(width, height);
+
+        editor.on('inputRead', function(cm, event){
+            if (!cm.state.completionActive && event.keyCode != 13) {
+                CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
+            }
+        });
+
+        setInterval(function() {
+            if(editor) {
+                if(window.innerWidth != width || window.innerHeight != height) {
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                    editor.setSize(width, height);
+                }
+            }
+        }, 50);
+
+    </script>
+</body>
+</html>

@@ -23,28 +23,27 @@ public class EditorTab implements Initializable {
 
     private static final String template;
 
-    @FXML private Tab tab;
-    @FXML private WebView webView;
-
-    private String title;
-    private WebEngine engine;
-    private boolean changes;
-    private boolean succeeded;
-
     static {
         // Initialize template
         ResourcesBuilder resourcesBuilder = new ResourcesBuilder();
-        resourcesBuilder.importCss("/cm/codemirror.min.css");
-        resourcesBuilder.importScript("/cm/codemirror.min.js");
-        template = IOUtils.convertStreamToString(Lily.class.getResourceAsStream("/cm/tab.html"))
+        resourcesBuilder.importCss("/libs/codemirror/style.min.css");
+        resourcesBuilder.importScript("/libs/codemirror/script.min.js");
+        template = IOUtils.convertStreamToString(Lily.class.getResourceAsStream("/ui/editor.html"))
                 .replace("{imports}", resourcesBuilder.toString());
     }
+
+    @FXML private Tab tab;
+    @FXML private WebView webView;
+
+    private WebEngine webEngine;
+    private String title;
+    private boolean changes;
+    private boolean succeeded;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Style
-        engine = webView.getEngine();
-        webView.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent; android:scrollbars=none");
+        webEngine = webView.getEngine();
         GridPane.setHgrow(webView, Priority.ALWAYS);
         GridPane.setVgrow(webView, Priority.ALWAYS);
 
@@ -57,7 +56,9 @@ public class EditorTab implements Initializable {
     }
 
     public void run(TabPane pane, File file) {
-        if (file == null) return;
+        if (file == null) {
+            return;
+        }
 
         // Tab Settings
         this.title = file.getName();
@@ -65,11 +66,11 @@ public class EditorTab implements Initializable {
 
         // Engine settings
         webView.setVisible(true);
-        engine.setJavaScriptEnabled(true);
+        webEngine.setJavaScriptEnabled(true);
 
         // Load content
         String source = template.replace("{code}", IOUtils.getContentOfFile(file));
-        engine.loadContent(source);
+        webEngine.loadContent(source);
         webView.setUserData(file);
 
         // Tabs
@@ -79,13 +80,13 @@ public class EditorTab implements Initializable {
         // Accelerators
         webView.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY), () -> {
             File f = (File) webView.getUserData();
-            IOUtils.overrideFile(f, (String) engine.executeScript("editor.getValue()"));
+            IOUtils.overrideFile(f, (String) webEngine.executeScript("editor.getValue()"));
             tab.setText(title);
             changes = false;
         });
 
         // State listener
-        engine.getLoadWorker().stateProperty().addListener((obs, oldValue, newValue) -> {
+        webEngine.getLoadWorker().stateProperty().addListener((obs, oldValue, newValue) -> {
             switch (newValue) {
                 case SUCCEEDED: {
                     succeeded = true;

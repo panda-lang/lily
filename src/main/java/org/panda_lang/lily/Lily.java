@@ -24,9 +24,9 @@ public class Lily extends Application {
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
         // Lily's ui
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/interface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/ui/interface.fxml"));
         Scene scene = new Scene(root, bounds.getWidth() - 20, bounds.getHeight() * 0.5);
-        root.getStylesheets().add("/css/material.css");
+        root.getStylesheets().add("/ui/themes/dark_material.css");
 
         // Lily's position
         stage.setWidth(bounds.getWidth() - 20);

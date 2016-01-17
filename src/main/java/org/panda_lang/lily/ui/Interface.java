@@ -3,20 +3,13 @@ package org.panda_lang.lily.ui;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TreeView;
-import javafx.scene.input.KeyCharacterCombination;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import org.panda_lang.lily.Lily;
-import org.panda_lang.panda.Panda;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,18 +63,6 @@ public class Interface implements Initializable {
         });
         // Action: File -> Exit
         menuFileExit.setOnAction(event -> System.exit(-1));
-        // Action: Help -> About
-        menuHelpAbout.setOnAction(event -> {
-            Stage dialog = new Stage();
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.initOwner(Lily.instance.getStage());
-            VBox dialogVBox = new VBox(20);
-            Text text = new Text("Lily " + Panda.PANDA_VERSION);
-            dialogVBox.getChildren().add(text);
-            Scene dialogScene = new Scene(dialogVBox, text.getText().length() * 6.5, 30);
-            dialog.setScene(dialogScene);
-            dialog.show();
-        });
 
         // SplitPane
         this.splitPane.setDividerPositions(0.25, 0.75);
@@ -92,10 +73,6 @@ public class Interface implements Initializable {
         // ProjectTree
         this.tree = new ProjectTree(filesTree);
         this.tree.open(new File("./"));
-    }
-
-    private void accelerator(MenuItem menuItem, String accelerator) {
-        menuItem.setAccelerator(new KeyCharacterCombination(accelerator));
     }
 
     private void extend(MenuItem menuItem) {
@@ -110,7 +87,7 @@ public class Interface implements Initializable {
 
     public void displayFile(File file) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/tab.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/tab.fxml"));
             loader.load();
             EditorTab ti = loader.getController();
             tabs.add(ti);

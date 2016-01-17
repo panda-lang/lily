@@ -20,8 +20,8 @@ public class ProjectTree {
     public ProjectTree(TreeView<String> tree) {
         this.tree = tree;
         this.files = new HashMap<>();
-        this.defaultFileIcon = new Image(getClass().getResourceAsStream("/icons/material_defaultFileIcon.png"));
-        this.defaultFolderIcon = new Image(getClass().getResourceAsStream("/icons/material_defaultFolderIcon.png"));
+        this.defaultFileIcon = new Image(getClass().getResourceAsStream("/ui/icons/material_defaultFileIcon.png"));
+        this.defaultFolderIcon = new Image(getClass().getResourceAsStream("/ui/icons/material_defaultFolderIcon.png"));
 
         this.tree.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getClickCount() == 2) {
