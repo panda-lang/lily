@@ -98,21 +98,26 @@
     }
 
     .tab-pane *.tab-header-background {
-        -fx-background-color: #262626;
+        -fx-background-color: null;
+        -fx-effect: innershadow(two-pass-box , transparent , 0, 0.0 , 0 , 0);
     }
 
     .tab {
         -fx-background-color: #212121;
-        -fx-text-fill: #67A1FF;
-        -fx-border-radius: 0;
-        -fx-padding: 0 10 0 10;
-        -fx-border-width: 0 1 0 1;
-        -fx-border-color: #262626;
+        -fx-background-radius: 0;
+        -fx-focus-color: transparent;
+        -fx-faint-focus-color: transparent;
+        -fx-padding: 0 15 0 15;
     }
 
     .tab-label {
-        -fx-text-fill: #67A1FF;
+        -fx-text-fill: #B2BFCE;
         -fx-alignment: CENTER;
+        -fx-focus-color: transparent;
+    }
+
+    .tab-close-button {
+        -fx-font-size: 10px;
     }
 
 /* WebView */

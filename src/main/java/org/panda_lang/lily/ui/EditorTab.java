@@ -28,6 +28,7 @@ public class EditorTab implements Initializable {
         ResourcesBuilder resourcesBuilder = new ResourcesBuilder();
         resourcesBuilder.importCss("/libs/codemirror/style.min.css");
         resourcesBuilder.importScript("/libs/codemirror/script.min.js");
+        resourcesBuilder.importScript("/libs/codemirror/panda.min.js");
         template = IOUtils.convertStreamToString(Lily.class.getResourceAsStream("/ui/editor.html"))
                 .replace("{imports}", resourcesBuilder.toString());
     }
