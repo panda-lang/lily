@@ -26,7 +26,7 @@ public class Lily extends Application {
         // Lily's ui
         Parent root = FXMLLoader.load(getClass().getResource("/ui/interface.fxml"));
         Scene scene = new Scene(root, bounds.getWidth() - 20, bounds.getHeight() * 0.5);
-        root.getStylesheets().add("/ui/themes/dark_material.css");
+        root.getStylesheets().add("/ui/themes/light_material.css");
 
         // Lily's position
         stage.setWidth(bounds.getWidth() - 20);
