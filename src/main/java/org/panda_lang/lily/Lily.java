@@ -9,14 +9,16 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.panda_lang.lily.ui.Interface;
 
-public class Lily extends Application {
+public class Lily extends Application
+{
 
     public static Lily instance;
     private Stage stage;
     private Interface anInterface;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws Exception
+    {
         this.stage = stage;
         instance = this;
 
@@ -40,20 +42,24 @@ public class Lily extends Application {
         stage.show();
     }
 
-    public void initAnInterface(Interface anInterface) {
+    public void initAnInterface(Interface anInterface)
+    {
         this.anInterface = anInterface;
     }
 
-    public Interface getInterface() {
+    public Interface getInterface()
+    {
         return this.anInterface;
     }
 
-    public Stage getStage() {
+    public Stage getStage()
+    {
         return this.stage;
     }
 
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception
+    {
         launch(args);
     }
 
