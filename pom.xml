@@ -35,6 +35,14 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>diorite</id>
+            <name>Panda Repository</name>
+            <url>http://repo.panda-lang.org/</url>
+        </repository>
+    </repositories>
+
     <build>
         <defaultGoal>clean install</defaultGoal>
         <plugins>
