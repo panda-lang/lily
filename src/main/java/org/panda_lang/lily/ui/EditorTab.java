@@ -19,13 +19,11 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EditorTab implements Initializable
-{
+public class EditorTab implements Initializable {
 
     private static final String template;
 
-    static
-    {
+    static {
         // Initialize template
         ResourcesBuilder resourcesBuilder = new ResourcesBuilder();
         resourcesBuilder.importCss("/libs/codemirror/style.min.css");
@@ -44,8 +42,7 @@ public class EditorTab implements Initializable
     private boolean succeeded;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
+    public void initialize(URL location, ResourceBundle resources) {
         // Style
         webEngine = webView.getEngine();
         GridPane.setHgrow(webView, Priority.ALWAYS);
@@ -53,8 +50,7 @@ public class EditorTab implements Initializable
 
         // Events
         webView.setOnKeyPressed(key -> {
-            if (changes)
-            {
+            if (changes) {
                 return;
             }
             tab.setText(title + " *");
@@ -62,10 +58,8 @@ public class EditorTab implements Initializable
         });
     }
 
-    public void run(TabPane pane, File file)
-    {
-        if (file == null)
-        {
+    public void run(TabPane pane, File file) {
+        if (file == null) {
             return;
         }
 
@@ -96,10 +90,8 @@ public class EditorTab implements Initializable
 
         // State listener
         webEngine.getLoadWorker().stateProperty().addListener((obs, oldValue, newValue) -> {
-            switch (newValue)
-            {
-                case SUCCEEDED:
-                {
+            switch (newValue) {
+                case SUCCEEDED: {
                     succeeded = true;
                 }
             }

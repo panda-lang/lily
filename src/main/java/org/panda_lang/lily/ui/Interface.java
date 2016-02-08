@@ -18,8 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Interface implements Initializable
-{
+public class Interface implements Initializable {
 
     @FXML private MenuItem menuFileOpenFile;
     @FXML private MenuItem menuFileOpenFolder;
@@ -36,8 +35,7 @@ public class Interface implements Initializable
     private EditorTab currentTab;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
+    public void initialize(URL url, ResourceBundle rb) {
         // Initialize Interface
         Lily.instance.initAnInterface(this);
 
@@ -51,8 +49,7 @@ public class Interface implements Initializable
         menuFileOpenFile.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showOpenDialog(Lily.instance.getStage());
-            if (file != null)
-            {
+            if (file != null) {
                 tree.open(file);
             }
         });
@@ -60,8 +57,7 @@ public class Interface implements Initializable
         menuFileOpenFolder.setOnAction(event -> {
             DirectoryChooser fileChooser = new DirectoryChooser();
             File file = fileChooser.showDialog(Lily.instance.getStage());
-            if (file != null)
-            {
+            if (file != null) {
                 tree.open(file);
             }
         });
@@ -79,41 +75,34 @@ public class Interface implements Initializable
         this.tree.open(new File("./"));
     }
 
-    private void extend(MenuItem menuItem)
-    {
+    private void extend(MenuItem menuItem) {
         String currentName = menuItem.getText();
         StringBuilder builder = new StringBuilder(currentName);
         int required = 50 - currentName.length();
-        for (int i = 0; i < required; i++)
-        {
+        for (int i = 0; i < required; i++) {
             builder.append(' ');
         }
         menuItem.setText(builder.toString());
     }
 
-    public void displayFile(File file)
-    {
-        try
-        {
+    public void displayFile(File file) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/tab.fxml"));
             loader.load();
             EditorTab ti = loader.getController();
             tabs.add(ti);
             ti.run(tabPane, file);
             currentTab = ti;
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public EditorTab getCurrentTab()
-    {
+    public EditorTab getCurrentTab() {
         return currentTab;
     }
 
-    public List<EditorTab> getTabs()
-    {
+    public List<EditorTab> getTabs() {
         return tabs;
     }
 
