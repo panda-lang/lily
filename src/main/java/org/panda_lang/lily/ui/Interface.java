@@ -65,14 +65,14 @@ public class Interface implements Initializable {
         menuFileExit.setOnAction(event -> System.exit(-1));
 
         // SplitPane
-        this.splitPane.setDividerPositions(0.25, 0.75);
+        splitPane.setDividerPositions(0.25, 0.75);
 
         // EditorTabs
-        this.tabs = new ArrayList<>();
+        tabs = new ArrayList<>();
 
         // ProjectTree
-        this.tree = new ProjectTree(filesTree);
-        this.tree.open(new File("./"));
+        tree = new ProjectTree(filesTree);
+        tree.open(new File("./"));
     }
 
     private void extend(MenuItem menuItem) {
