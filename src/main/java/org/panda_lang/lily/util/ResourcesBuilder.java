@@ -22,6 +22,10 @@ public class ResourcesBuilder {
         stringBuilder.append("\"></script>");
     }
 
+    public StringBuilder getStringBuilder() {
+        return stringBuilder;
+    }
+
     @Override
     public String toString() {
         return stringBuilder.toString();

@@ -1,7 +1,6 @@
 package org.panda_lang.lily.ui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
@@ -10,28 +9,40 @@ import javafx.scene.control.TreeView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import org.panda_lang.lily.Lily;
+import org.panda_lang.panda.PandaScript;
+import org.panda_lang.panda.core.syntax.block.MethodBlock;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Interface implements Initializable {
 
+    @FXML private MenuItem menuFileNew;
     @FXML private MenuItem menuFileOpenFile;
     @FXML private MenuItem menuFileOpenFolder;
+    @FXML public MenuItem menuFileSettings;
+    @FXML public MenuItem menuFileSaveAll;
     @FXML private MenuItem menuFileExit;
+
     @FXML private MenuItem menuEditUndo;
+    @FXML public MenuItem menuEditRedo;
+    @FXML public MenuItem menuEditCut;
+    @FXML public MenuItem menuEditCopy;
+    @FXML public MenuItem menuEditPaste;
+    @FXML public MenuItem menuEditFind;
+    @FXML public MenuItem menuEditSelectAll;
+    @FXML public MenuItem menuEditDelete;
+
     @FXML private MenuItem menuRunRun;
     @FXML private MenuItem menuHelpAbout;
+
     @FXML private SplitPane splitPane;
     @FXML private TreeView<String> filesTree;
     @FXML private TabPane tabPane;
 
     private ProjectTree tree;
-    private List<EditorTab> tabs;
     private EditorTab currentTab;
 
     @Override
@@ -39,11 +50,35 @@ public class Interface implements Initializable {
         // Initialize Interface
         Lily.instance.initAnInterface(this);
 
+        // SplitPane
+        splitPane.setDividerPositions(0.25, 0.75);
+
+        // ProjectTree
+        tree = new ProjectTree(filesTree);
+        try {
+            tree.open(new File("./").getCanonicalFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         // Extend
         extend(menuFileOpenFolder);
         extend(menuEditUndo);
         extend(menuRunRun);
         extend(menuHelpAbout);
+
+        // Initialize Actions
+        initializeActions();
+    }
+
+    protected void initializeActions() {
+        // Action: File -> New
+        menuFileNew.setOnAction(event -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setInitialDirectory(tree.getDirectory());
+            fileChooser.showOpenDialog(Lily.instance.getStage());
+            tree.open(tree.getDirectory());
+        });
 
         // Action: File -> Open
         menuFileOpenFile.setOnAction(event -> {
@@ -64,18 +99,21 @@ public class Interface implements Initializable {
         // Action: File -> Exit
         menuFileExit.setOnAction(event -> System.exit(-1));
 
-        // SplitPane
-        splitPane.setDividerPositions(0.25, 0.75);
+        // Action: Run -> Run
+        menuRunRun.setOnAction(event -> {
+            String source = (String) getCurrentTab().getWebEngine().executeScript("editor.getValue()");
+            PandaScript pandaScript = Lily.instance.getPanda().getPandaLoader().loadSimpleScript(source);
+            pandaScript.call(MethodBlock.class, "main");
+        });
 
-        // EditorTabs
-        tabs = new ArrayList<>();
-
-        // ProjectTree
-        tree = new ProjectTree(filesTree);
-        tree.open(new File("./"));
+        tabPane.getSelectionModel().selectedItemProperty().addListener(
+            (ov, t, t1) -> {
+                currentTab = (EditorTab) tabPane.getSelectionModel().getSelectedItem();
+            }
+        );
     }
 
-    private void extend(MenuItem menuItem) {
+    public void extend(MenuItem menuItem) {
         String currentName = menuItem.getText();
         StringBuilder builder = new StringBuilder(currentName);
         int required = 50 - currentName.length();
@@ -85,25 +123,14 @@ public class Interface implements Initializable {
         menuItem.setText(builder.toString());
     }
 
-    public void displayFile(File file) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/tab.fxml"));
-            loader.load();
-            EditorTab ti = loader.getController();
-            tabs.add(ti);
-            ti.run(tabPane, file);
-            currentTab = ti;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void displayFile(File file) throws IOException {
+        EditorTab editorTab = new EditorTab();
+        editorTab.run(tabPane, file);
+        currentTab = editorTab;
     }
 
     public EditorTab getCurrentTab() {
         return currentTab;
-    }
-
-    public List<EditorTab> getTabs() {
-        return tabs;
     }
 
 }

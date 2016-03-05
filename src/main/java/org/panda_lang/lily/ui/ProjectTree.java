@@ -7,6 +7,9 @@ import javafx.scene.image.ImageView;
 import org.panda_lang.lily.Lily;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +19,7 @@ public class ProjectTree {
     private final Image defaultFileIcon;
     private final Image defaultFolderIcon;
     private final Map<TreeItem<String>, File> files;
+    private File directory;
 
     public ProjectTree(TreeView<String> tree) {
         this.tree = tree;
@@ -27,13 +31,18 @@ public class ProjectTree {
             if (mouseEvent.getClickCount() == 2) {
                 TreeItem<String> item = tree.getSelectionModel().getSelectedItem();
                 File file = files.get(item);
-                Lily.instance.getInterface().displayFile(file);
+                try {
+                    Lily.instance.getInterface().displayFile(file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
 
-    public void open(File dir) {
-        findFiles(dir, null);
+    public void open(File directory) {
+        this.directory = directory;
+        findFiles(directory, null);
     }
 
     private void addFile(TreeItem<String> root, File file) {
@@ -43,15 +52,18 @@ public class ProjectTree {
         files.put(item, file);
     }
 
-    private void findFiles(File dir, TreeItem<String> parent) {
-        TreeItem<String> root = new TreeItem<>(dir.getName());
+    private void findFiles(File directory, TreeItem<String> parent) {
+        TreeItem<String> root = new TreeItem<>(directory.getName());
 
-        if (dir.isFile()) {
-            addFile(root, dir);
+        if (directory.isFile()) {
+            addFile(root, directory);
         }
         else {
-            File[] files = dir.listFiles();
+            final File[] files = directory.listFiles();
+
             if (files != null) {
+                sort(files);
+
                 for (File file : files) {
                     if (file.isDirectory()) {
                         findFiles(file, root);
@@ -72,6 +84,25 @@ public class ProjectTree {
         else {
             parent.getChildren().add(root);
         }
+    }
+
+    public void sort(File[] array) {
+        Comparator<File> comp = (f1, f2) -> {
+            if (f1.isDirectory() && !f2.isDirectory()) {
+                return -1;
+            }
+            else if (!f1.isDirectory() && f2.isDirectory()) {
+                return 1;
+            }
+            else {
+                return f1.compareTo(f2);
+            }
+        };
+        Arrays.sort(array, comp);
+    }
+
+    public File getDirectory() {
+        return directory;
     }
 
 }

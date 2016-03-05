@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns:tabs="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panda_lang.lily.ui.Interface">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panda_lang.lily.ui.Interface">
     <top>
         <BorderPane prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <top>
-                <MenuBar fx:id="menuBar" prefHeight="20.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
-                    <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
+                <MenuBar prefHeight="20.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                    <Menu mnemonicParsing="false" text="File">
                         <MenuItem fx:id="menuFileNew" accelerator="Ctrl + N" mnemonicParsing="false" text="New"/>
                         <MenuItem fx:id="menuFileOpenFile" mnemonicParsing="false" text="Open File..."/>
                         <MenuItem fx:id="menuFileOpenFolder" mnemonicParsing="false" text="Open Folder..."/>
@@ -14,7 +14,7 @@
                         <MenuItem fx:id="menuFileSaveAll" accelerator="Ctrl + S" mnemonicParsing="false" text="Save All"/>
                         <MenuItem fx:id="menuFileExit" mnemonicParsing="false" text="Exit"/>
                     </Menu>
-                    <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
+                    <Menu mnemonicParsing="false" text="Edit">
                         <MenuItem fx:id="menuEditUndo" accelerator="Ctrl + Z" mnemonicParsing="false" text="Undo"/>
                         <MenuItem fx:id="menuEditRedo" accelerator="Ctrl + Shift + Z" mnemonicParsing="false" text="Redo"/>
                         <MenuItem fx:id="menuEditCut" accelerator="Ctrl + X" mnemonicParsing="false" text="Cut"/>
@@ -24,10 +24,10 @@
                         <MenuItem fx:id="menuEditSelectAll" accelerator="Ctrl + A" mnemonicParsing="false" text="Select All"/>
                         <MenuItem fx:id="menuEditDelete" mnemonicParsing="false" text="Delete"/>
                     </Menu>
-                    <Menu fx:id="menuRun" mnemonicParsing="false" text="Run">
+                    <Menu mnemonicParsing="false" text="Run">
                         <MenuItem fx:id="menuRunRun" accelerator="Ctrl + R" mnemonicParsing="false" text="Run"/>
                     </Menu>
-                    <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
+                    <Menu mnemonicParsing="false" text="Help">
                         <MenuItem fx:id="menuHelpAbout" mnemonicParsing="false" text="About Panda"/>
                     </Menu>
                 </MenuBar>
@@ -35,16 +35,13 @@
             <bottom>
                 <BorderPane prefHeight="30.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                     <left>
-                        <ToolBar fx:id="path" prefHeight="30.0" prefWidth="500.0" BorderPane.alignment="CENTER">
-                        </ToolBar>
+                        <ToolBar prefHeight="30.0" prefWidth="500.0" BorderPane.alignment="CENTER"/>
                     </left>
                     <center>
-                        <ToolBar fx:id="controls" prefHeight="30.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-                        </ToolBar>
+                        <ToolBar prefHeight="30.0" prefWidth="300.0" BorderPane.alignment="CENTER"/>
                     </center>
                     <right>
-                        <ToolBar fx:id="gap" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                        </ToolBar>
+                        <ToolBar prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
                     </right>
                 </BorderPane>
             </bottom>
@@ -53,11 +50,10 @@
     <center>
         <SplitPane fx:id="splitPane" dividerPositions="0.1" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <TreeView fx:id="filesTree" editable="true" prefHeight="200.0" prefWidth="400.0"/>
-            <TabPane fx:id="tabPane" tabClosingPolicy="SELECTED_TAB" prefHeight="200.0" prefWidth="600.0">
-            </TabPane>
+            <TabPane fx:id="tabPane" tabClosingPolicy="SELECTED_TAB" prefHeight="200.0" prefWidth="600.0"/>
         </SplitPane>
     </center>
     <bottom>
-        <ToolBar fx:id="toolBar" prefHeight="20.0" prefWidth="1000.0" BorderPane.alignment="CENTER"/>
+        <ToolBar prefHeight="20.0" prefWidth="1000.0" BorderPane.alignment="CENTER"/>
     </bottom>
 </BorderPane>
