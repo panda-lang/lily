@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?><?import javafx.scene.web.WebView?>
-<fx:root type="javafx.scene.control.Tab" xmlns:fx="http://javafx.com/fxml">
+<?import javafx.scene.control.Tab?><?import javafx.scene.layout.*?><?import javafx.scene.web.WebView?>
+<fx:root xmlns:fx="http://javafx.com/fxml" type="javafx.scene.control.Tab">
     <AnchorPane fx:id="anchorPane">
         <WebView fx:id="webView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
     </AnchorPane>

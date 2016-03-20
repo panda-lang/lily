@@ -18,6 +18,10 @@ public class Lily extends Application {
     private Stage stage;
     private Interface anInterface;
 
+    public static void main(String[] args) throws Exception {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         instance = this;
@@ -61,11 +65,6 @@ public class Lily extends Application {
 
     public Panda getPanda() {
         return panda;
-    }
-
-
-    public static void main(String[] args) throws Exception {
-        launch(args);
     }
 
 }

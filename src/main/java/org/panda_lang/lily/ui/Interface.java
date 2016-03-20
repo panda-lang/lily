@@ -19,14 +19,8 @@ import java.util.ResourceBundle;
 
 public class Interface implements Initializable {
 
-    @FXML private MenuItem menuFileNew;
-    @FXML private MenuItem menuFileOpenFile;
-    @FXML private MenuItem menuFileOpenFolder;
     @FXML public MenuItem menuFileSettings;
     @FXML public MenuItem menuFileSaveAll;
-    @FXML private MenuItem menuFileExit;
-
-    @FXML private MenuItem menuEditUndo;
     @FXML public MenuItem menuEditRedo;
     @FXML public MenuItem menuEditCut;
     @FXML public MenuItem menuEditCopy;
@@ -34,7 +28,11 @@ public class Interface implements Initializable {
     @FXML public MenuItem menuEditFind;
     @FXML public MenuItem menuEditSelectAll;
     @FXML public MenuItem menuEditDelete;
-
+    @FXML private MenuItem menuFileNew;
+    @FXML private MenuItem menuFileOpenFile;
+    @FXML private MenuItem menuFileOpenFolder;
+    @FXML private MenuItem menuFileExit;
+    @FXML private MenuItem menuEditUndo;
     @FXML private MenuItem menuRunRun;
     @FXML private MenuItem menuHelpAbout;
 
@@ -107,9 +105,9 @@ public class Interface implements Initializable {
         });
 
         tabPane.getSelectionModel().selectedItemProperty().addListener(
-            (ov, t, t1) -> {
-                currentTab = (EditorTab) tabPane.getSelectionModel().getSelectedItem();
-            }
+                (ov, t, t1) -> {
+                    currentTab = (EditorTab) tabPane.getSelectionModel().getSelectedItem();
+                }
         );
     }
 

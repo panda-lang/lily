@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panda_lang.lily.ui.Interface">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" fx:controller="org.panda_lang.lily.ui.Interface">
     <top>
         <BorderPane prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <top>
