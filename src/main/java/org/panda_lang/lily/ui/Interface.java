@@ -10,7 +10,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import org.panda_lang.lily.Lily;
 import org.panda_lang.panda.PandaScript;
-import org.panda_lang.panda.core.syntax.block.MethodBlock;
+import org.panda_lang.panda.core.statement.block.MethodBlock;
 
 import java.io.File;
 import java.io.IOException;

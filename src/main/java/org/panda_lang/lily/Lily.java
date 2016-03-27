@@ -47,6 +47,7 @@ public class Lily extends Application {
         // Others
         panda.initializeDefaultElements();
         stage.setTitle("Lily the Panda IDE");
+        stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
     }
