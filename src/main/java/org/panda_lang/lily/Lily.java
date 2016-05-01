@@ -34,20 +34,19 @@ public class Lily extends Application {
 
         // Lily's ui
         Parent root = FXMLLoader.load(getClass().getResource("/ui/interface.fxml"));
-        Scene scene = new Scene(root, bounds.getWidth() - 20, bounds.getHeight() * 0.5);
+        Scene scene = new Scene(root, bounds.getWidth() - 2, bounds.getHeight() * 0.9);
         root.getStylesheets().add("/ui/themes/default_material.css");
         stage.getIcons().add(new Image("/ui/icons/icon.png"));
 
         // Lily's position
-        stage.setWidth(bounds.getWidth() - 20);
-        stage.setHeight(bounds.getHeight() * 0.8);
+        stage.setWidth(bounds.getWidth() - 2);
+        stage.setHeight(bounds.getHeight() * 0.9);
         stage.setX((bounds.getWidth() - stage.getWidth()) / 2);
         stage.setY((bounds.getHeight() - stage.getHeight()) / 2);
 
         // Others
         panda.initializeDefaultElements();
         stage.setTitle("Lily the Panda IDE");
-        stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
     }

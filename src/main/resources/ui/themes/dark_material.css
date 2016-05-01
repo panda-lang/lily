@@ -26,27 +26,27 @@
 
     .tool-bar {
         -fx-background-color: #212121;
-        -fx-border-width: 1px 0px 0px 0px;
+        -fx-border-width: 1 0 0 0;
         -fx-border-color: #2c2c2c #2c2c2c #2c2c2c #2c2c2c;
     }
 
 /* SplitPane */
     .split-pane {
-        -fx-margin: 0px;
-        -fx-padding: 0px;
-        -fx-border-width: 1px 0px 0px 0px;
+        -fx-margin: 0;
+        -fx-padding: 0;
+        -fx-border-width: 1 0 0 0;
         -fx-border-color: #2c2c2c #2c2c2c #2c2c2c #2c2c2c;
         -fx-background-color: #212121;
     }
 
-    .split-pane:horizontal > .split-pane-divider {
-        -fx-padding: 0 0 0 0;
+    .split-pane:vertical > .split-pane-divider, .split-pane:horizontal > .split-pane-divider {
+        -fx-padding: 0 0 0 10;
         -fx-border-color: #212121;
         -fx-background-color: #212121;
     }
 
 /* ScrollBar */
-    .scroll-bar:horizontal, .scroll-bar:vertical  {
+    .scroll-bar:horizontal, .scroll-bar:vertical {
         -fx-background-color: transparent;
     }
 
@@ -94,12 +94,11 @@
 /* TabPane */
     .tab-pane {
         -fx-background-color: #282829;
-        -fx-border-width: 0px 0px 0px 0px;
+        -fx-border-width: 0 0 0 0;
     }
 
     .tab-pane *.tab-header-background {
         -fx-background-color: null;
-        -fx-effect: innershadow(two-pass-box , transparent , 0, 0.0 , 0 , 0);
     }
 
     .tab {

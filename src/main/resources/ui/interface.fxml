@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.web.WebView?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" fx:controller="org.panda_lang.lily.ui.Interface">
     <top>
         <BorderPane prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
@@ -48,12 +48,15 @@
         </BorderPane>
     </top>
     <center>
-        <SplitPane fx:id="splitPane" dividerPositions="0.1" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
-            <TreeView fx:id="filesTree" editable="true" prefHeight="200.0" prefWidth="400.0"/>
-            <TabPane fx:id="tabPane" tabClosingPolicy="SELECTED_TAB" prefHeight="200.0" prefWidth="600.0"/>
+        <SplitPane fx:id="workspacePane" orientation="VERTICAL" prefWidth="1000.0" prefHeight="320.0">
+            <SplitPane fx:id="workspaceEditorPane" orientation="HORIZONTAL" prefHeight="250.0" prefWidth="1000.0">
+                <TreeView fx:id="filesTree" editable="true" prefWidth="400.0" prefHeight="250.0"/>
+                <TabPane fx:id="tabPane" tabClosingPolicy="SELECTED_TAB" prefWidth="600.0" prefHeight="250.0" />
+            </SplitPane>
+            <SplitPane fx:id="workspaceAssistantsPane" orientation="HORIZONTAL" prefWidth="1000.0" prefHeight="70.0" />
         </SplitPane>
     </center>
     <bottom>
-        <ToolBar prefHeight="20.0" prefWidth="1000.0" BorderPane.alignment="CENTER"/>
+        <ToolBar fx:id="bottomToolBar" prefHeight="20.0" prefWidth="1000.0" BorderPane.alignment="CENTER" />
     </bottom>
 </BorderPane>

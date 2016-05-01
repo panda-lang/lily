@@ -36,7 +36,9 @@ public class Interface implements Initializable {
     @FXML private MenuItem menuRunRun;
     @FXML private MenuItem menuHelpAbout;
 
-    @FXML private SplitPane splitPane;
+    @FXML private SplitPane workspacePane;
+    @FXML private SplitPane workspaceEditorPane;
+    @FXML private SplitPane workspaceAssistantsPane;
     @FXML private TreeView<String> filesTree;
     @FXML private TabPane tabPane;
 
@@ -48,8 +50,10 @@ public class Interface implements Initializable {
         // Initialize Interface
         Lily.instance.initAnInterface(this);
 
-        // SplitPane
-        splitPane.setDividerPositions(0.25, 0.75);
+        // Dividers
+        workspacePane.setDividerPositions(0.75, 0.25);
+        workspaceEditorPane.setDividerPositions(0.25, 0.75);
+        workspaceAssistantsPane.setDividerPositions(1, 0);
 
         // ProjectTree
         tree = new ProjectTree(filesTree);
@@ -99,6 +103,12 @@ public class Interface implements Initializable {
 
         // Action: Run -> Run
         menuRunRun.setOnAction(event -> {
+            ConsolePane consolePane = ConsolePane.getInstance();
+            consolePane.clear();
+            workspaceAssistantsPane.getItems().clear();
+            workspaceAssistantsPane.getItems().add(consolePane);
+            consolePane.bind(workspaceAssistantsPane);
+
             String source = (String) getCurrentTab().getWebEngine().executeScript("editor.getValue()");
             PandaScript pandaScript = Lily.instance.getPanda().getPandaLoader().loadSimpleScript(source);
             pandaScript.call(MethodBlock.class, "main");
