@@ -9,8 +9,6 @@ import javafx.scene.control.TreeView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import org.panda_lang.lily.Lily;
-import org.panda_lang.panda.PandaScript;
-import org.panda_lang.panda.core.statement.block.MethodBlock;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,7 +49,7 @@ public class Interface implements Initializable {
         Lily.instance.initAnInterface(this);
 
         // Dividers
-        workspacePane.setDividerPositions(0.75, 0.25);
+        workspacePane.setDividerPositions(1, 0);
         workspaceEditorPane.setDividerPositions(0.25, 0.75);
         workspaceAssistantsPane.setDividerPositions(1, 0);
 
@@ -110,15 +108,15 @@ public class Interface implements Initializable {
             consolePane.bind(workspaceAssistantsPane);
 
             String source = (String) getCurrentTab().getWebEngine().executeScript("editor.getValue()");
-            PandaScript pandaScript = Lily.instance.getPanda().getPandaLoader().loadSimpleScript(source);
-            pandaScript.call(MethodBlock.class, "main");
+
+            // TODO
+            // PandaScript pandaScript = Lily.instance.getPanda().getPandaLoader().loadSimpleScript(source);
+            // pandaScript.call(MethodBlock.class, "main");
         });
 
-        tabPane.getSelectionModel().selectedItemProperty().addListener(
-                (ov, t, t1) -> {
-                    currentTab = (EditorTab) tabPane.getSelectionModel().getSelectedItem();
-                }
-        );
+        tabPane.getSelectionModel().selectedItemProperty().addListener((ov, t, t1) -> {
+            currentTab = (EditorTab) tabPane.getSelectionModel().getSelectedItem();
+        });
     }
 
     public void extend(MenuItem menuItem) {

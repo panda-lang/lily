@@ -49,11 +49,11 @@
     </top>
     <center>
         <SplitPane fx:id="workspacePane" orientation="VERTICAL" prefWidth="1000.0" prefHeight="320.0">
-            <SplitPane fx:id="workspaceEditorPane" orientation="HORIZONTAL" prefHeight="250.0" prefWidth="1000.0">
-                <TreeView fx:id="filesTree" editable="true" prefWidth="400.0" prefHeight="250.0"/>
-                <TabPane fx:id="tabPane" tabClosingPolicy="SELECTED_TAB" prefWidth="600.0" prefHeight="250.0" />
+            <SplitPane fx:id="workspaceEditorPane" orientation="HORIZONTAL" prefHeight="320.0" prefWidth="1000.0">
+                <TreeView fx:id="filesTree" editable="true" prefWidth="400.0" prefHeight="320.0"/>
+                <TabPane fx:id="tabPane" tabClosingPolicy="SELECTED_TAB" prefWidth="600.0" prefHeight="320.0" />
             </SplitPane>
-            <SplitPane fx:id="workspaceAssistantsPane" orientation="HORIZONTAL" prefWidth="1000.0" prefHeight="70.0" />
+            <SplitPane fx:id="workspaceAssistantsPane" orientation="HORIZONTAL" prefWidth="1000.0" prefHeight="0.0" />
         </SplitPane>
     </center>
     <bottom>

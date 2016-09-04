@@ -35,7 +35,7 @@ public class Lily extends Application {
         // Lily's ui
         Parent root = FXMLLoader.load(getClass().getResource("/ui/interface.fxml"));
         Scene scene = new Scene(root, bounds.getWidth() - 2, bounds.getHeight() * 0.9);
-        root.getStylesheets().add("/ui/themes/default_material.css");
+        root.getStylesheets().add("/ui/themes/dark_material.css");
         stage.getIcons().add(new Image("/ui/icons/icon.png"));
 
         // Lily's position
@@ -45,7 +45,6 @@ public class Lily extends Application {
         stage.setY((bounds.getHeight() - stage.getHeight()) / 2);
 
         // Others
-        panda.initializeDefaultElements();
         stage.setTitle("Lily the Panda IDE");
         stage.setScene(scene);
         stage.show();

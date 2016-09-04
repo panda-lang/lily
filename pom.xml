@@ -2,14 +2,18 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <name>Lily</name>
     <groupId>org.panda_lang</groupId>
     <artifactId>lily</artifactId>
     <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
-
-    <name>Lily</name>
+    <scm>
+        <connection>scm:git:https://github.com/Panda-Programming-Language/Lily.git</connection>
+        <developerConnection>scm:git:https://github.com/Panda-Programming-Language/Lily.git</developerConnection>
+        <url>https://github.com/Panda-Programming-Language/Lily</url>
+    </scm>
     <description>Lily the Panda IDE</description>
-    <url>http://panda-lang.org/</url>
+    <url>https://panda-lang.org/</url>
 
     <licenses>
         <license>
@@ -20,16 +24,16 @@
     </licenses>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <java.languageLevel>1.8</java.languageLevel>
+        <lily.version>${project.version}</lily.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.panda_lang</groupId>
             <artifactId>panda</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>indev-0.0.2-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -37,12 +41,16 @@
             <artifactId>richtextfx</artifactId>
             <version>0.6.10</version>
         </dependency>
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>8.40.11</version>
+        </dependency>
     </dependencies>
 
     <repositories>
         <repository>
-            <id>diorite</id>
-            <name>Panda Repository</name>
+            <id>panda-repo</id>
             <url>http://repo.panda-lang.org/</url>
         </repository>
     </repositories>
@@ -73,8 +81,8 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.languageLevel}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -84,10 +92,8 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Built-By>Dzikoysk</Built-By>
-                            <Implementation-Vendor>Panda-Programming-Language</Implementation-Vendor>
                             <Implementation-Title>${project.name}</Implementation-Title>
-                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Implementation-Version>${lily.version}</Implementation-Version>
                         </manifestEntries>
                         <manifest>
                             <mainClass>org.panda_lang.lily.Lily</mainClass>

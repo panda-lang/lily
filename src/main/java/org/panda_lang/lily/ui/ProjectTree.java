@@ -1,9 +1,11 @@
 package org.panda_lang.lily.ui;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import org.panda_lang.lily.Lily;
 
 import java.io.File;
@@ -31,6 +33,28 @@ public class ProjectTree {
             if (mouseEvent.getClickCount() == 2) {
                 TreeItem<String> item = tree.getSelectionModel().getSelectedItem();
                 File file = files.get(item);
+
+                if (file.isDirectory()) {
+                    return;
+                }
+
+                double bytes = file.length();
+                double kilobytes = (bytes / 1024);
+                double megabytes = (kilobytes / 1024);
+
+                if (megabytes > 1) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Lily Warning");
+                    alert.setHeaderText("File is too large");
+                    alert.setContentText("File can not be larger than 1MB");
+
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("/ui/icons/icon.png"));
+
+                    alert.showAndWait();
+                    return;
+                }
+
                 try {
                     Lily.instance.getInterface().displayFile(file);
                 } catch (IOException e) {

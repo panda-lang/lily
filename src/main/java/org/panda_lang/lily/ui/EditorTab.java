@@ -12,10 +12,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import org.panda_lang.core.util.FileUtils;
+import org.panda_lang.core.util.IOUtils;
+import org.panda_lang.core.util.StringUtils;
 import org.panda_lang.lily.Lily;
 import org.panda_lang.lily.util.ResourcesBuilder;
-import org.panda_lang.panda.util.IOUtils;
-import org.panda_lang.panda.util.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -78,7 +79,7 @@ public class EditorTab extends Tab implements Initializable {
         webEngine.setJavaScriptEnabled(true);
 
         // Load source
-        String source = IOUtils.getContentOfFile(file);
+        String source = FileUtils.getContentOfFile(file);
         if (source == null) {
             source = "";
         }
@@ -100,7 +101,7 @@ public class EditorTab extends Tab implements Initializable {
             File f = (File) webView.getUserData();
             String src = (String) webEngine.executeScript("editor.getValue()");
             // StringUtils.replace(src, "\t", "    ")
-            IOUtils.overrideFile(f, src);
+            FileUtils.overrideFile(f, src);
             setText(title);
             changed = false;
         });
