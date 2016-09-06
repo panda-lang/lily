@@ -27,6 +27,12 @@
                     <Menu mnemonicParsing="false" text="Run">
                         <MenuItem fx:id="menuRunRun" accelerator="Ctrl + R" mnemonicParsing="false" text="Run"/>
                     </Menu>
+                    <Menu mnemonicParsing="false" text="Git">
+                        <MenuItem fx:id="menuGitClone" mnemonicParsing="false" text="Clone"/>
+                        <MenuItem fx:id="menuGitUpdate" accelerator="Ctrl + K" mnemonicParsing="false" text="Update"/>
+                        <MenuItem fx:id="menuGitCommit" accelerator="Ctrl + T" mnemonicParsing="false" text="Commit"/>
+
+                    </Menu>
                     <Menu mnemonicParsing="false" text="Help">
                         <MenuItem fx:id="menuHelpAbout" mnemonicParsing="false" text="About Panda"/>
                     </Menu>

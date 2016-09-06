@@ -2,10 +2,7 @@ package org.panda_lang.lily.ui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import org.panda_lang.lily.Lily;
@@ -32,6 +29,7 @@ public class Interface implements Initializable {
     @FXML private MenuItem menuFileExit;
     @FXML private MenuItem menuEditUndo;
     @FXML private MenuItem menuRunRun;
+    @FXML private MenuItem menuGitClone;
     @FXML private MenuItem menuHelpAbout;
 
     @FXML private SplitPane workspacePane;
@@ -65,6 +63,7 @@ public class Interface implements Initializable {
         extend(menuFileOpenFolder);
         extend(menuEditUndo);
         extend(menuRunRun);
+        extend(menuGitClone);
         extend(menuHelpAbout);
 
         // Initialize Actions
