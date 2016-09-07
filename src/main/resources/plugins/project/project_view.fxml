@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TreeView?>
+<fx:root xmlns:fx="http://javafx.com/fxml" type="javafx.scene.control.TreeView" editable="true" prefWidth="400.0" prefHeight="320.0" />

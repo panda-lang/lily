@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml" fx:id="workspaceEditorPane" type="javafx.scene.control.SplitPane" orientation="HORIZONTAL" prefHeight="320.0" prefWidth="1000.0">
+    <!-- <ProjectView fx:id="filesTree" editable="true" prefWidth="400.0" prefHeight="320.0"/> -->
+    <TabPane fx:id="tabPane" tabClosingPolicy="SELECTED_TAB" prefWidth="600.0" prefHeight="320.0" />
+</fx:root>

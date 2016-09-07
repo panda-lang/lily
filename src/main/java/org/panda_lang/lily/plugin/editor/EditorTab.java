@@ -1,4 +1,4 @@
-package org.panda_lang.lily.ui;
+package org.panda_lang.lily.plugin.editor;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +33,7 @@ public class EditorTab extends Tab implements Initializable {
         resourcesBuilder.importCss("/libs/codemirror/style.min.css");
         resourcesBuilder.importScript("/libs/codemirror/script.min.js");
         resourcesBuilder.importScript("/libs/codemirror/panda.min.js");
-        template = IOUtils.convertStreamToString(Lily.class.getResourceAsStream("/ui/editor.html"))
+        template = IOUtils.convertStreamToString(Lily.class.getResourceAsStream("/plugins/editor/editor.html"))
                 .replace("{imports}", resourcesBuilder.toString());
     }
 
@@ -47,7 +47,7 @@ public class EditorTab extends Tab implements Initializable {
     public EditorTab() throws IOException {
         super();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/tab.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/plugins/editor/tab.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         fxmlLoader.load();

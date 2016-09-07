@@ -5,7 +5,7 @@
     <name>Lily</name>
     <groupId>org.panda_lang</groupId>
     <artifactId>lily</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>2016.0.1</version>
     <packaging>jar</packaging>
     <scm>
         <connection>scm:git:https://github.com/Panda-Programming-Language/Lily.git</connection>

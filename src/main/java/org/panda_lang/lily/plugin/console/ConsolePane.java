@@ -1,4 +1,4 @@
-package org.panda_lang.lily.ui;
+package org.panda_lang.lily.plugin.console;
 
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;

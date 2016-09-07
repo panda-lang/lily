@@ -1,18 +1,16 @@
-package org.panda_lang.lily.ui;
+package org.panda_lang.lily.plugin.menu;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import org.panda_lang.lily.Lily;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Interface implements Initializable {
+public class Menu extends BorderPane implements Initializable {
 
     @FXML public MenuItem menuFileSettings;
     @FXML public MenuItem menuFileSaveAll;
@@ -32,45 +30,27 @@ public class Interface implements Initializable {
     @FXML private MenuItem menuGitClone;
     @FXML private MenuItem menuHelpAbout;
 
-    @FXML private SplitPane workspacePane;
-    @FXML private SplitPane workspaceEditorPane;
-    @FXML private SplitPane workspaceAssistantsPane;
-    @FXML private TreeView<String> filesTree;
-    @FXML private TabPane tabPane;
+    public Menu() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/plugins/menu/menu.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
 
-    private ProjectTree tree;
-    private EditorTab currentTab;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // Initialize Interface
-        Lily.instance.initAnInterface(this);
-
-        // Dividers
-        workspacePane.setDividerPositions(1, 0);
-        workspaceEditorPane.setDividerPositions(0.25, 0.75);
-        workspaceAssistantsPane.setDividerPositions(1, 0);
-
-        // ProjectTree
-        tree = new ProjectTree(filesTree);
         try {
-            tree.open(new File("./").getCanonicalFile());
-        } catch (IOException e) {
-            e.printStackTrace();
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
         }
-
-        // Extend
-        extend(menuFileOpenFolder);
-        extend(menuEditUndo);
-        extend(menuRunRun);
-        extend(menuGitClone);
-        extend(menuHelpAbout);
-
-        // Initialize Actions
-        initializeActions();
     }
 
-    protected void initializeActions() {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        MenuUtils.extend(menuFileOpenFolder);
+        MenuUtils.extend(menuEditUndo);
+        MenuUtils.extend(menuRunRun);
+        MenuUtils.extend(menuGitClone);
+        MenuUtils.extend(menuHelpAbout);
+
+        /*
         // Action: File -> New
         menuFileNew.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
@@ -112,30 +92,8 @@ public class Interface implements Initializable {
             // PandaScript pandaScript = Lily.instance.getPanda().getPandaLoader().loadSimpleScript(source);
             // pandaScript.call(MethodBlock.class, "main");
         });
-
-        tabPane.getSelectionModel().selectedItemProperty().addListener((ov, t, t1) -> {
-            currentTab = (EditorTab) tabPane.getSelectionModel().getSelectedItem();
-        });
+        */
     }
 
-    public void extend(MenuItem menuItem) {
-        String currentName = menuItem.getText();
-        StringBuilder builder = new StringBuilder(currentName);
-        int required = 50 - currentName.length();
-        for (int i = 0; i < required; i++) {
-            builder.append(' ');
-        }
-        menuItem.setText(builder.toString());
-    }
-
-    public void displayFile(File file) throws IOException {
-        EditorTab editorTab = new EditorTab();
-        editorTab.run(tabPane, file);
-        currentTab = editorTab;
-    }
-
-    public EditorTab getCurrentTab() {
-        return currentTab;
-    }
 
 }

@@ -1,69 +1,71 @@
 package org.panda_lang.lily;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.stage.Screen;
+import javafx.application.Platform;
 import javafx.stage.Stage;
-import org.panda_lang.lily.ui.Interface;
+import org.panda_lang.lily.plugin.PluginManager;
+import org.panda_lang.lily.ui.LilyUI;
 import org.panda_lang.panda.Panda;
 
 public class Lily extends Application {
 
     public static Lily instance;
-    private Panda panda;
-    private Stage stage;
-    private Interface anInterface;
 
-    public static void main(String[] args) throws Exception {
-        launch(args);
+    private final Panda panda;
+    private final PluginManager pluginManager;
+    private final LilyComposition composition;
+    private Stage stage;
+    private LilyUI ui;
+
+    public Lily() {
+        instance = this;
+
+        this.panda = new Panda();
+        this.pluginManager = new PluginManager(this);
+        this.composition = new LilyComposition(this);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        instance = this;
-
         this.stage = stage;
-        this.panda = new Panda();
+        this.ui = new LilyUI(this);
 
-        // Size of the screen
-        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        ui.initialize();
+        pluginManager.loadPlugins();
+        pluginManager.enablePlugins();
 
-        // Lily's ui
-        Parent root = FXMLLoader.load(getClass().getResource("/ui/interface.fxml"));
-        Scene scene = new Scene(root, bounds.getWidth() - 2, bounds.getHeight() * 0.9);
-        root.getStylesheets().add("/ui/themes/dark_material.css");
-        stage.getIcons().add(new Image("/ui/icons/icon.png"));
-
-        // Lily's position
-        stage.setWidth(bounds.getWidth() - 2);
-        stage.setHeight(bounds.getHeight() * 0.9);
-        stage.setX((bounds.getWidth() - stage.getWidth()) / 2);
-        stage.setY((bounds.getHeight() - stage.getHeight()) / 2);
-
-        // Others
-        stage.setTitle("Lily the Panda IDE");
-        stage.setScene(scene);
         stage.show();
     }
 
-    public void initAnInterface(Interface anInterface) {
-        this.anInterface = anInterface;
+    public void exit() {
+        pluginManager.disablePlugins();
+
+        Platform.exit();
+        System.exit(-1);
     }
 
-    public Interface getInterface() {
-        return this.anInterface;
+    public LilyUI getUI() {
+        return this.ui;
     }
 
     public Stage getStage() {
         return this.stage;
     }
 
+    public LilyComposition getComposition() {
+        return composition;
+    }
+
+    public PluginManager getPluginManager() {
+        return pluginManager;
+    }
+
     public Panda getPanda() {
         return panda;
+    }
+
+    public static Lily getInstance() {
+        return instance;
     }
 
 }

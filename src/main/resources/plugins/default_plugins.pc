@@ -1,0 +1,4 @@
+plugins:
+- Editor
+- Menu
+- Project
