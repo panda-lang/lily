@@ -2,10 +2,13 @@ package org.panda_lang.lily.plugin.menu;
 
 import javafx.scene.layout.BorderPane;
 import org.panda_lang.lily.Lily;
+import org.panda_lang.lily.LilyConstants;
 import org.panda_lang.lily.plugin.LilyPlugin;
+import org.panda_lang.lily.plugin.PluginProperties;
 import org.panda_lang.lily.ui.LilyLayout;
 import org.panda_lang.lily.ui.LilyUI;
 
+@PluginProperties(name = "Console", version = LilyConstants.VERSION)
 public class MenuPlugin extends LilyPlugin {
 
     private Menu menu;
@@ -30,11 +33,6 @@ public class MenuPlugin extends LilyPlugin {
 
     public Menu getMenu() {
         return menu;
-    }
-
-    @Override
-    public String getName() {
-        return "Menu";
     }
 
 }

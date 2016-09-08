@@ -3,6 +3,7 @@ package org.panda_lang.lily;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
+import org.panda_lang.lily.plugin.PluginFinder;
 import org.panda_lang.lily.plugin.PluginManager;
 import org.panda_lang.lily.ui.LilyUI;
 import org.panda_lang.panda.Panda;
@@ -29,6 +30,9 @@ public class Lily extends Application {
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         this.ui = new LilyUI(this);
+
+        PluginFinder pluginFinder = new PluginFinder(pluginManager);
+        pluginFinder.find();
 
         ui.initialize();
         pluginManager.loadPlugins();

@@ -1,8 +1,11 @@
 package org.panda_lang.lily.plugin.project;
 
 import org.panda_lang.lily.Lily;
+import org.panda_lang.lily.LilyConstants;
 import org.panda_lang.lily.plugin.LilyPlugin;
+import org.panda_lang.lily.plugin.PluginProperties;
 
+@PluginProperties(name = "Project", version = LilyConstants.VERSION)
 public class ProjectPlugin extends LilyPlugin {
 
     private ProjectView projectView;
@@ -19,11 +22,6 @@ public class ProjectPlugin extends LilyPlugin {
 
     public ProjectView getProjectView() {
         return projectView;
-    }
-
-    @Override
-    public String getName() {
-        return "Project";
     }
 
 }
