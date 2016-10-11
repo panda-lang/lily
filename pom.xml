@@ -61,7 +61,7 @@
     <repositories>
         <repository>
             <id>panda-repo</id>
-            <url>http://repo.panda-lang.org/</url>
+            <url>https://repo.panda-lang.org/</url>
         </repository>
     </repositories>
 

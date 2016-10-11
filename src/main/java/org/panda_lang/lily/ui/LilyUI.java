@@ -30,7 +30,7 @@ public class LilyUI {
         stage.setY((bounds.getHeight() - stage.getHeight()) / 2);
 
         Parent root = layout.getBorderPane();
-        root.getStylesheets().add("/ui/themes/dark_material.css");
+        root.getStylesheets().add("/ui/themes/light_material.css");
 
         Scene scene = new Scene(root, stage.getWidth(), stage.getHeight());
         stage.setScene(scene);

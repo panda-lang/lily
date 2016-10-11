@@ -1,16 +1,15 @@
 package org.panda_lang.lily.plugin.project;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.panda_lang.lily.util.FXMLLoaderUtils;
 import org.panda_lang.lily.util.FileComparator;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,15 +26,7 @@ public class ProjectView extends TreeView<String> {
     public ProjectView(ProjectPlugin projectPlugin) {
         super();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/plugins/project/project_view.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+        FXMLLoaderUtils.loadElementFromResources(this, "/plugins/project/project_view.fxml");
 
         this.tree = this;
         this.files = new HashMap<>();

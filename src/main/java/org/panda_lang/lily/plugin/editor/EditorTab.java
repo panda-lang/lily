@@ -1,7 +1,6 @@
 package org.panda_lang.lily.plugin.editor;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -16,10 +15,10 @@ import org.panda_lang.core.util.FileUtils;
 import org.panda_lang.core.util.IOUtils;
 import org.panda_lang.core.util.StringUtils;
 import org.panda_lang.lily.Lily;
+import org.panda_lang.lily.util.FXMLLoaderUtils;
 import org.panda_lang.lily.util.ResourcesBuilder;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -44,13 +43,9 @@ public class EditorTab extends Tab implements Initializable {
     private boolean changed;
     private boolean succeeded;
 
-    public EditorTab() throws IOException {
+    public EditorTab() {
         super();
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/plugins/editor/tab.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-        fxmlLoader.load();
+        FXMLLoaderUtils.loadElementFromResources(this, "/plugins/editor/tab.fxml");
     }
 
     public static String getTemplate() {
