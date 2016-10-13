@@ -5,5 +5,5 @@ public @interface PluginProperties {
     String name();
 
     String version();
-
+    
 }
