@@ -27,12 +27,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import org.panda_lang.core.util.FileUtils;
-import org.panda_lang.core.util.IOUtils;
-import org.panda_lang.core.util.StringUtils;
 import org.panda_lang.lily.Lily;
 import org.panda_lang.lily.util.FXMLLoaderUtils;
 import org.panda_lang.lily.util.ResourcesBuilder;
+import org.panda_lang.panda.utilities.commons.io.FileUtils;
+import org.panda_lang.panda.utilities.commons.io.IOUtils;
+import org.panda_lang.panda.utilities.commons.objects.StringUtils;
 
 import java.io.File;
 import java.net.URL;
@@ -91,12 +91,7 @@ public class EditorTab extends Tab implements Initializable {
 
         // Load source
         String source = FileUtils.getContentOfFile(file);
-        if (source == null) {
-            source = "";
-        }
-        else {
-            source = StringUtils.replace(source, "    ", "\t");
-        }
+        source = StringUtils.replace(source, "    ", "\t");
 
         // Load content
         String content = template.replace("{code}", source);

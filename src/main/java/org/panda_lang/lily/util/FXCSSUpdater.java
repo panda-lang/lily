@@ -20,7 +20,7 @@ import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import org.panda_lang.core.util.IOUtils;
+import org.panda_lang.panda.utilities.commons.io.IOUtils;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
