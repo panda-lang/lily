@@ -18,9 +18,9 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.panda_lang</groupId>
+    <groupId>org.panda-lang</groupId>
     <artifactId>lily</artifactId>
-    <version>2016.0.1</version>
+    <version>2018.4.15</version>
     <packaging>jar</packaging>
 
     <name>Lily</name>
@@ -51,7 +51,7 @@
         <dependency>
             <groupId>org.panda-lang</groupId>
             <artifactId>panda</artifactId>
-            <version>indev-0.2.11</version>
+            <version>indev-0.6.5</version>
         </dependency>
         <dependency>
             <groupId>org.reflections</groupId>
