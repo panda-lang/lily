@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package org.panda_lang.lily.launcher;
+package org.panda_lang.lily;
 
-import javafx.application.Application;
-import org.panda_lang.lily.Lily;
+import javafx.application.*;
 
 public class LilyLauncher {
 
