@@ -1,4 +1,4 @@
-# Lily [![Build Status](https://travis-ci.org/panda-lang/lily.svg?branch=master)](https://travis-ci.org/panda-lang/lily)
+# Lily
 Lily is a lightweight IDE for Panda based programming languages. For now, it's still in development phase.
 
 ##### Download
